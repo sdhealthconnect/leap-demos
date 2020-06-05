@@ -60,8 +60,7 @@ services:
         HAPI_FHIR_URL: ${HAPI_FHIR_URL}
     ports:
         - 9092:9092
-
-      
+        -
 volumes:
   hapi-fhir-mysql:
   leap-mysql:
