@@ -1,0 +1,1 @@
+{"hook":"patient-consent-consult","hookInstance":"123456","context":{"actor":[{"system":"urn:ietf:rfc:3986","value":"2.16.840.1.113883.20.5"}],"purposeOfUse":"TREAT","scope":"patient-privacy","patientId":[{"system":"http://hl7.org/fhir/sid/us-ssn","value":"111111111"}]}}

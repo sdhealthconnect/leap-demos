@@ -1,0 +1,67 @@
+version: '3.6'
+
+services:
+  hapi-fhir-mysql:
+    image: mysql:latest
+    container_name: hapi-fhir-mysql
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'hapi'
+      MYSQL_USER: 'hapiDbUser'
+      MYSQL_PASSWORD: 'hapiDbPass'
+      MYSQL_ROOT_PASSWORD: 'admin'
+    ports:
+      - 3307:3306
+    volumes:
+      - hapi-fhir-mysql:/var/lib/mysql
+
+  hapi-fhir-jpaserver:
+    image: ddecouteau/hapi-fhir-jpaserver
+    container_name: hapi-fhir-jpaserver
+    environment:
+      HAPI_FHIR_URL_PUBLIC: ${HAPI_FHIR_URL_PUBLIC}
+      HAPI_FHIR_URL: ${HAPI_FHIR_URL}
+      HAPI_DB_URL: ${HAPI_DB_URL}
+      HAPI_DB_USER: ${HAPI_DB_USER}
+      HAPI_DB_PASS: ${HAPI_DB_PASS}
+    ports:
+      - 8080:8080
+      
+  leap-mysql:
+      image: mysql:latest
+      container_name: leap-mysql
+      restart: always
+      environment:
+          MYSQL_DATABASE: 'leap'
+          MYSQL_USER: 'admin'
+          MYSQL_PASSWORD: 'admin'
+          MYSQL_ROOT_PASSWORD: 'admin'
+      ports:
+        - 3308:3306
+      volumes:
+        - leap-mysql:/var/lib/mysql
+      
+  leap-sls-service:
+    image: ddecouteau/leap-sls-service
+    container_name: leap-sls-service
+    environment:
+      LEAP_DB_PASS: ${LEAP_DB_PASS}
+      LEAP_DB_USER: ${LEAP_DB_USER}
+      LEAP_DB_URL: ${LEAP_DB_URL}
+    ports:
+      - 9091:9091
+      
+  leap-ces-orchestration:
+    image: ddecouteau/leap-ces-orchestration
+    container_name: leap-ces-orchestration
+    environment:
+        CDS_HOST_URL: ${CDS_HOST_URL}
+        SLS_HOST_URL: ${SLS_HOST_URL}
+        HAPI_FHIR_URL: ${HAPI_FHIR_URL}
+    ports:
+        - 9092:9092
+
+      
+volumes:
+  hapi-fhir-mysql:
+  leap-mysql:
