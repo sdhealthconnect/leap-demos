@@ -1,0 +1,14 @@
+/leap-demos/target/
+/leap-ces-fhir-client/target/
+/leap-ces-orchestration/target/
+/leap-ces-sls-client/target/
+/leap-ces-commons/target/
+
+**/.classpath
+**/.project
+**/*.prefs
+**/.factorypath
+.vscode/*
+.DS_STORE
+.idea/**
+**/*.iml
