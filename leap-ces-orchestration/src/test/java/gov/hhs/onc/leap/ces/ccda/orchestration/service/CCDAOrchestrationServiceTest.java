@@ -22,7 +22,7 @@ import java.util.logging.Logger;
 public class CCDAOrchestrationServiceTest {
     private static final Logger LOGGER = Logger.getLogger(CCDAOrchestrationServiceTest.class.getName());
     //orchestration endpoint
-    private String host =  "http://localhost:9092";
+    private String host =  "http://34.94.253.50:9093";
     private String endpoint;
     private String baseDirectory = "/Users/duanedecouteau/leap-demos/test-scripts/message-artifacts/";
 
@@ -54,7 +54,7 @@ public class CCDAOrchestrationServiceTest {
 
         ObjectMapper mapper = new ObjectMapper();
         String request = mapper.writeValueAsString(hookRequestWithData);
-        writeRequestToFile(request, "CCDACardTestWithDcoument.json");
+        //writeRequestToFile(request, "CCDACardTestWithDcoument.json");
 
         String result = makeRequest(request);
 
@@ -108,7 +108,7 @@ public class CCDAOrchestrationServiceTest {
 
         ObjectMapper mapper = new ObjectMapper();
         String requestString = mapper.writeValueAsString(xacmlRequestWithData);
-        writeRequestToFile(requestString, "CCDAXacmlTestWithDocument.json");
+        //writeRequestToFile(requestString, "CCDAXacmlTestWithDocument.json");
 
         String result = makeRequest(requestString);
 
@@ -137,7 +137,7 @@ public class CCDAOrchestrationServiceTest {
 
         ObjectMapper mapper = new ObjectMapper();
         String request = mapper.writeValueAsString(hookRequest);
-        writeRequestToFile(request, "CCDACardAuthTest.json");
+        //writeRequestToFile(request, "CCDACardAuthTest.json");
 
         String result = makeRequest(request);
 
@@ -181,7 +181,7 @@ public class CCDAOrchestrationServiceTest {
         xacmlRequest.setRequest(request);
         ObjectMapper mapper = new ObjectMapper();
         String xacmlRequestString = mapper.writeValueAsString(xacmlRequest);
-        writeRequestToFile(xacmlRequestString, "CCDAXacmlTest.json");
+        //writeRequestToFile(xacmlRequestString, "CCDAXacmlTest.json");
 
         String result = makeRequest(xacmlRequestString);
 
