@@ -1,6 +1,7 @@
 
 # Consent Enforcement Service (CES) Demonstration Environment
 ![Build Status](https://github.com/sdhealthconnect/leap-demos/workflows/Build%20Status/badge.svg)
+
 This repository contains the artifacts for demonstrating integration with the [LEAP Consent Decision Service (CDS)](https://github.com/sdhealthconnect/leap-cds) to enforce patient consent in different exchange use-cases. Currently, the following demos are available:
 
 - HL7 v2 Exchange
