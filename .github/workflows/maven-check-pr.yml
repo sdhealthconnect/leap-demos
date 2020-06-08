@@ -1,9 +1,10 @@
 # This CI workflow will: 
 # Run the workflow on an Ubuntu environment doing this steps. 
-#   Step 1) Set up JDK 11
-#   Step 2) StepSet up a Maven Settings Action with sonatypeSnapshots enabled
-#   Step 3) Maven Build and Package, tests skipped 
-#   Step 4) Maven Verify and Run Unit Tests
+#   Step 1) Checking out the Git project
+#   Step 2) Set up JDK 11
+#   Step 3) StepSet up a Maven Settings Action with sonatypeSnapshots enabled
+#   Step 4) Maven Build and Package, tests skipped 
+#   Step 5) Maven Verify and Run Unit Tests
 
 name: Build Status
 on:
@@ -20,6 +21,8 @@ jobs:
     name: Build and Tests
     runs-on: ubuntu-18.04
     steps:
+      - name: Checking out the Git project
+        uses: actions/checkout@v1
       - name: Set up JDK 11
         uses: actions/setup-java@v1
         with:
