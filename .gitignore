@@ -2,7 +2,8 @@
 /leap-ces-commons/target/
 /leap-ces-fhir-client/target/
 /leap-ces-sls-client/target/
-/leap-ces-orchestration/target/
+/leap-ces-v2-orchestration/target/
+/leap-ces-ccda-orchestration/target/
 /leap-demos/target/
 
 **/.classpath

@@ -1,0 +1,11 @@
+cds:
+    host:
+        url: ${CDS_HOST_URL}
+    
+sls:
+    host:
+        url: ${SLS_HOST_URL}
+        
+fhir:
+  r4:
+    baseurl: ${HAPI_FHIR_URL}        

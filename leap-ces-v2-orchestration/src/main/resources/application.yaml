@@ -1,0 +1,19 @@
+server:
+  port: 9092
+
+spring:
+    profiles:
+        active: local
+        
+logging:
+  file: /tmp/f.log
+  level:
+    root: INFO
+    gov.hhs.onc: DEBUG
+    
+nlp:
+    enabled: false
+
+info:
+  app:
+    name: LEAP V2 Demo Orchestration
