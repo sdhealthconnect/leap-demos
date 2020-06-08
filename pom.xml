@@ -13,10 +13,11 @@
     <version>0.0.1</version>
     <packaging>pom</packaging>
     <modules>
-        <module>leap-ces-orchestration</module>
         <module>leap-ces-fhir-client</module>
         <module>leap-ces-sls-client</module>
         <module>leap-ces-commons</module>
+        <module>leap-ces-v2-orchestration</module>
+        <module>leap-ces-ccda-orchestration</module>
     </modules>
     <properties>
         <java.version>11</java.version>

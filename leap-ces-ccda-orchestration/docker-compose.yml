@@ -1,0 +1,14 @@
+version: '3.6'
+
+services:
+  leap-ces-ccda-orchestration:
+    image: leap-ces-ccda-orchestration
+    container_name: leap-ces-ccda-orchestration
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      CDS_HOST_URL: ${CDS_HOST_URL}
+      SLS_HOST_URL: ${SLS_HOST_URL}
+    ports:
+      - 9093:9093

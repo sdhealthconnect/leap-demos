@@ -1,0 +1,14 @@
+version: '3.6'
+
+services:
+  leap-ces-v2-orchestration:
+    image: leap-ces-v2-orchestration
+    container_name: leap-ces-v2-orchestration
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      CDS_HOST_URL: ${CDS_HOST_URL}
+      SLS_HOST_URL: ${SLS_HOST_URL}
+    ports:
+      - 9092:9092
