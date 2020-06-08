@@ -5,7 +5,7 @@
 #   Step 3) Maven Build and Package, tests skipped 
 #   Step 4) Maven Verify and Run Unit Tests
 
-name: CI Verify PR (Maven Build, Package and Run Unit Tests)
+name: Build Status
 on:
   push:
     branches: 
