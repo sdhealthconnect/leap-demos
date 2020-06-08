@@ -1,0 +1,38 @@
+# This CI workflow will: 
+# Run the workflow on an Ubuntu environment doing this steps. 
+#   Step 1) Set up JDK 11
+#   Step 2) StepSet up a Maven Settings Action with sonatypeSnapshots enabled
+#   Step 3) Maven Build and Package, tests skipped 
+#   Step 4) Maven Verify and Run Unit Tests
+
+name: CI Verify PR (Maven Build, Package and Run Unit Tests)
+on:
+  push:
+    branches: 
+    - master 
+    - develop
+  pull_request:
+    branches: 
+    - master
+    - develop
+jobs:
+  build:
+    name: Build and Tests
+    runs-on: ubuntu-18.04
+    steps:
+      - name: Set up JDK 11
+      - uses: actions/setup-java@v1
+        with:
+          java-version: 1.11
+      - name: Maven Settings Action
+        uses: s4u/maven-settings-action@v2.1.0
+        with:
+          sonatypeSnapshots: true
+      - name: Maven Build and Package, tests skipped 
+        run: mvn -B clean package -DskipTests
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Maven Verify and Run Unit Tests
+        run: mvn -B clean verify
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
