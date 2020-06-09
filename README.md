@@ -7,17 +7,22 @@ This repository contains the artifacts for demonstrating integration with the [L
 - HL7 v2 Exchange
 
 ## Prerequisites
-- OpenJDK 11.0.6_10
-- Maven 3.6.x
-- Make sure your Maven is configured to fetch dependencies from Github packages as discussed [below](#enable-github-packages-for-maven)
-- Docker 19.03.5 and Docker Compose 1.25.2 
+- [OpenJDK](https://openjdk.java.net/) 11.0.6_10 or newer
+- [Maven](https://maven.apache.org/) 3.6.x or newer
+- [Docker](https://www.docker.com/) 19.03.5 or newer 
+- [Docker Compose](https://docs.docker.com/compose/) 1.25.2 or newer
+
+## Enviroment setup
+- Setup JAVA_HOME environment variable pointing to the location of the JDK’s installation directory.
+- Setup M2_HOME environment variable pointing to the location of the Maven’s installation directory.  
+- Make sure your Maven is configured to fetch dependencies from Github packages as discussed [below](#enable-github-packages-for-maven)  
 
 
 ## Build Instructions
 -  Clone this repository and change to the repository directory:
 ```
-> git clone https://github.com/sdhealthconnect/leap-ces.git
-> cd leap-ces
+> git clone https://github.com/sdhealthconnect/leap-demos.git
+> cd leap-demos
 ```
 - Review the environment variable file `docker-env.sh` and modify if needed:
 ```
@@ -46,6 +51,10 @@ export LEAP_LOG_LEVEL='WARN'
 ```
 > mvn clean install -DskipTests
 ```
+- Remove all exited containers in `docker`
+```
+> docker ps -a -f status=exited
+```
 - Build the containers using `docker-compose`:
 ```
 > docker-compose build
@@ -68,9 +77,15 @@ You can also check this via the command line:
 ```
 > docker stats
 ```
+or alternatively with this command that includes information as: `CONTAINER ID, IMAGE, COMMAND, CREATED, STATUS, PORTS` 
+```
+> docker ps
+```
 
 ## The `HL7v2` Demo
-- Launch the Swagger UI at `http://localhost:9092/swagger-ui.html` and click on the "Try It Out" button.
+- Launch the [Swagger UI](http://localhost:9092/swagger-ui.html) and find the method **V2-Message-Controller** or follow
+this [link](http://localhost:9092/swagger-ui/index.html?configUrl=/v3/api-docs/swagger-config#/V2-Message-Controller/processMessage) 
+-Click on the "Try It Out" button.
 - Select "text/plain" in Request Body type drop-down list
 - Copy the contents of `./test-script/message-artifacts/v2alcoholabuse.txt` in the Request Body.
 - Click on Execute button.
