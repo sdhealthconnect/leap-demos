@@ -15,3 +15,4 @@
 .idea/**
 **/*.iml
 
+/leap-ces-ccda-orchestration-embedded/target/
