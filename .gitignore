@@ -5,6 +5,7 @@
 /leap-ces-v2-orchestration/target/
 /leap-ces-ccda-orchestration/target/
 /leap-demos/target/
+/leap-ces-ccda-orchestration-embedded/target/
 
 **/.classpath
 **/.project
@@ -14,4 +15,3 @@
 .DS_STORE
 .idea/**
 **/*.iml
-

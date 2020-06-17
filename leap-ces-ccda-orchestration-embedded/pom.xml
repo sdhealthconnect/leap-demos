@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>gov.hhs.onc.leap</groupId>
+        <artifactId>leap-demos</artifactId>
+        <version>0.0.1</version>
+    </parent>
+    <artifactId>leap-ces-ccda-orchestration-embedded</artifactId>
+    <packaging>jar</packaging>
+    
+    <properties>
+                <!-- JDK Versions -->
+        <compiler.source>1.7</compiler.source>
+        <compiler.target>1.7</compiler.target>
+    </properties>
+    
+    <dependencies>
+        <dependency>
+            <groupId>org.connectopensource</groupId>
+            <artifactId>CONNECTCoreLib</artifactId>
+            <version>5.4.0-SNAPSHOT</version>
+            <scope>provided</scope>
+        </dependency>
+      <dependency>
+        <groupId>com.fasterxml.jackson.core</groupId>
+        <artifactId>jackson-databind</artifactId>
+        <version>2.10.0</version>
+      </dependency>
+        <dependency>
+            <groupId>org.connectopensource</groupId>
+            <artifactId>CONNECTCommonTypesLib</artifactId>
+            <version>5.4.0-SNAPSHOT</version>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+</project>
