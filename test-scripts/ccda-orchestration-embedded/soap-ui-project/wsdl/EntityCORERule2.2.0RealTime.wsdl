@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns:CORE="http://www.caqh.org/SOAP/WSDL/"
+             xmlns:tns="urn:gov:hhs:fha:nhinc:nhincentitycore"
+             xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+             xmlns="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:wsaws="http://www.w3.org/2005/08/addressing"
+             xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" 
+             xmlns:vprop="http://docs.oasis-open.org/wsbpel/2.0/varprop" 
+             xmlns:sxnmp="http://www.sun.com/wsbpel/2.0/process/executable/SUNExtension/NMProperty"
+             xmlns:nccommonentity="urn:gov:hhs:fha:nhinc:common:nhinccommonentity"
+             name="NhincEntityCORE"
+             targetNamespace="urn:gov:hhs:fha:nhinc:nhincentitycore">
+    <documentation>CAQH CORE X12 Document Submission</documentation>
+    <types>
+        <xsd:schema xmlns="http://schemas.xmlsoap.org/wsdl/"  elementFormDefault="qualified" targetNamespace="http://www.caqh.org/SOAP/WSDL/">
+            <xsd:import namespace="urn:gov:hhs:fha:nhinc:gateway:samltokendata" schemaLocation="../schemas/nhinc/gateway/SamlTokenData.xsd"/>
+            <xsd:import namespace="urn:gov:hhs:fha:nhinc:common:nhinccommonentity" schemaLocation="../schemas/nhinc/common/NhincCommonEntity.xsd"/>
+        </xsd:schema>
+    </types>
+    <message name="RealTimeRequestMessage">
+        <part name="body" element="nccommonentity:RespondingGateway_CrossGatewayRealTimeRequest"/>
+    </message>
+    <message name="RealTimeResponseMessage">
+        <part name="body" element="nccommonentity:RespondingGateway_CrossGatewayRealTimeResponse"/>
+    </message>
+    <portType name="EntityCORETransaction_PortType">
+        <operation name="RealTimeTransaction">
+            <input message="tns:RealTimeRequestMessage" wsaw:Action="RealTimeTransaction"/>
+            <output message="tns:RealTimeResponseMessage" wsaw:Action="http://www.caqh.org/SOAP/WSDL/CORETransactions/RealTimeTransactionResponse"/>
+        </operation>
+    </portType>
+    <binding name="EntityCORETransactionSoapBinding" type="tns:EntityCORETransaction_PortType">
+        <soap12:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="RealTimeTransaction">
+            <soap12:operation soapAction="RealTimeTransaction" style="document"/>
+            <input>
+                <soap12:body use="literal"/>
+            </input>
+            <output>
+                <soap12:body use="literal"/>
+            </output>
+        </operation>
+    </binding>
+    <service name="EntityCORETransaction">
+        <port name="EntityCORETransaction_Port" binding="tns:EntityCORETransactionSoapBinding">
+            <soap12:address location="http://localhost:${HttpDefaultPort}/Gateway/CORETransaction/EntityService/EntityCORETransactionUnsecured"/>
+        </port>
+    </service>
+</definitions>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This wsdl file is for an XDS.b Document Registry Actor -->
+<definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap12/"
+             xmlns="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:ihe="urn:ihe:iti:xds-b:2007"
+             xmlns:rs="urn:oasis:names:tc:ebxml-regrep:xsd:rs:3.0"
+             xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             xmlns:tns="urn:gov:hhs:fha:nhinc:entityxds"
+             xmlns:nccommonentity="urn:gov:hhs:fha:nhinc:common:nhinccommonentity"
+             xmlns:wsaws="http://www.w3.org/2005/08/addressing"
+             xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/"
+             name="EntityXDS"
+             targetNamespace="urn:gov:hhs:fha:nhinc:entityxds">
+	<documentation>IHE XDS Document Registry</documentation>
+	<types>
+		<xsd:schema>
+			<xsd:import namespace="urn:oasis:names:tc:ebxml-regrep:xsd:rs:3.0" schemaLocation="../schemas/ebRS/rs.xsd"/>
+			<xsd:import namespace="urn:ihe:iti:xds-b:2007" schemaLocation="../schemas/ihe/XDS.b_DocumentRepository.xsd"/>
+			<xsd:import schemaLocation="../schemas/ebRS/query.xsd" namespace="urn:oasis:names:tc:ebxml-regrep:xsd:query:3.0"/>
+			<xsd:import namespace="urn:gov:hhs:fha:nhinc:gateway:samltokendata" schemaLocation="../schemas/nhinc/gateway/SamlTokenData.xsd"/>
+			<xsd:import namespace="urn:gov:hhs:fha:nhinc:common:nhinccommonentity" schemaLocation="../schemas/nhinc/common/NhincCommonEntity.xsd"/>
+		</xsd:schema>
+	</types>
+	<message name="RegisterDocumentSet-b_Message">
+		<documentation>Register Document Set</documentation>
+		<part name="body" element="nccommonentity:RespondingGateway_RegisterDocumentSetRequest"/>
+	</message>
+	<message name="RegisterDocumentSet-bResponse_Message">
+		<documentation>Register Document Set Response</documentation>
+		<part name="body" element="rs:RegistryResponse"/>
+	</message>
+	<portType name="EntityXDS_PortType">
+		<operation name="RegisterDocumentSet-b">
+			<input message="tns:RegisterDocumentSet-b_Message" wsaw:Action="urn:gov:hhs:fha:nhinc:entityxds:RegisterDocumentSet-b"/>
+			<output message="tns:RegisterDocumentSet-bResponse_Message" wsaw:Action="urn:gov:hhs:fha:nhinc:entityxds:RegisterDocumentSet-bResponse"/>
+		</operation>
+	</portType>
+	<binding name="EntityXDS_Binding" type="tns:EntityXDS_PortType">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<operation name="RegisterDocumentSet-b">
+      <soap:operation soapAction="urn:gov:hhs:fha:nhinc:entityxds:RegisterDocumentSet-b"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+	</binding>
+	<service name="EntityXDS_Service">
+		<port name="EntityXDS_Port" binding="tns:EntityXDS_Binding">
+			<soap:address location="http://localhost:${HttpDefaultPort}/Gateway/DocumentDataSubmission/1_0/EntityService/EntityDocDataSubmissionUnsecured"/>
+		</port>
+	</service>
+</definitions>
