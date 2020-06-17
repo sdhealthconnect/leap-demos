@@ -42,12 +42,6 @@ public class ConsentConsultCardClient {
 
   public PatientConsentConsultHookResponse getConsentDecision(String request) throws IOException {
 
-//    URL url = new URL(host + endpoint);
-//    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-//    conn.setDoOutput(true);
-//    conn.setRequestMethod("POST");
-//    conn.setRequestProperty("Content-Type", "application/json");
-//    conn.setRequestProperty("Accept", "application/json");
 
     String result = "";
     PatientConsentConsultHookResponse decision = new PatientConsentConsultHookResponse();
@@ -86,27 +80,7 @@ public class ConsentConsultCardClient {
 
         decision = new ObjectMapper().readValue(result, PatientConsentConsultHookResponse.class);
 
-//        OutputStream os = conn.getOutputStream();
-//        os.write(request.getBytes());
-//        os.flush();
-//
-//        if (conn.getResponseCode() != HttpURLConnection.HTTP_OK) {
-//          LOGGER.log(
-//              Level.WARNING,
-//              "Consent Consult Hook Failed: HTTP error code : " + conn.getResponseCode());
-//          throw new RuntimeException(
-//              "Consent Consult Hook Failed: HTTP error code : " + conn.getResponseCode());
-//        }
-//
-//        BufferedReader br = new BufferedReader(new InputStreamReader((conn.getInputStream())));
-//        StringBuffer response = new StringBuffer();
-//        while (br.ready()) {
-//          response.append("\n" + br.readLine());
-//        }
-//        conn.disconnect();
-//
-//        return new ObjectMapper()
-//            .readValue(response.toString(), PatientConsentConsultHookResponse.class);
+
     }
     catch (Exception ex) {
         ex.printStackTrace();
