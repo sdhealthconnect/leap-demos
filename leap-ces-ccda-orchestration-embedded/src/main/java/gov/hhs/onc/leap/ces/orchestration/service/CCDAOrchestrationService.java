@@ -1,26 +1,23 @@
 package gov.hhs.onc.leap.ces.orchestration.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import gov.hhs.fha.nhinc.properties.PropertyAccessException;
+import gov.hhs.fha.nhinc.properties.PropertyAccessor;
 import gov.hhs.onc.leap.ces.common.clients.card.ConsentConsultCardClient;
 import gov.hhs.onc.leap.ces.common.clients.model.card.Card;
 import gov.hhs.onc.leap.ces.common.clients.model.card.Extension;
 import gov.hhs.onc.leap.ces.common.clients.model.card.PatientConsentConsultHookRequest;
 import gov.hhs.onc.leap.ces.common.clients.model.card.PatientConsentConsultHookResponse;
 import gov.hhs.onc.leap.ces.common.clients.model.sls.LabelingResult;
-import gov.hhs.onc.leap.ces.common.clients.model.xacml.Obligations;
-import gov.hhs.onc.leap.ces.common.clients.model.xacml.Response;
 import gov.hhs.onc.leap.ces.common.clients.model.xacml.XacmlRequest;
-import gov.hhs.onc.leap.ces.common.clients.model.xacml.XacmlResponse;
 import gov.hhs.onc.leap.ces.common.clients.xacml.ConsentConsultXacmlClient;
 import gov.hhs.onc.leap.ces.orchestration.cds.PatientConsentConsultHookRequestWithData;
 import gov.hhs.onc.leap.ces.orchestration.cds.PatientConsentConsultHookResponseWithData;
 import gov.hhs.onc.leap.ces.orchestration.cds.PatientConsentConsultXacmlRequestWithData;
 import gov.hhs.onc.leap.ces.common.clients.sls.SLSRequestClient;
-import gov.hhs.onc.leap.ces.orchestration.cds.PatientConsentConsultXacmlResponseWithData;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
@@ -34,6 +31,8 @@ import java.util.UUID;
 @Component
 @Slf4j
 public class CCDAOrchestrationService {
+
+    private final String PROPERTY_FILE = "LEAP.properties";
 
     private static final Logger log = LoggerFactory.getLogger(CCDAOrchestrationService.class);
     private ConsentConsultCardClient hookClient;
@@ -50,13 +49,12 @@ public class CCDAOrchestrationService {
     private String label = "";
 
 
-    //@Value("${cds.host.url}")
-    private String CDS_HOST = "http://sdhc-leap.appspot.com";
+    private String CDS_HOST;
 
-    //@Value("${sls.host.url}")
-    private String SLS_HOST = "http://34.94.253.50:9091";
+    private String SLS_HOST;
 
     public PatientConsentConsultHookResponseWithData processDocumentCDSHooks(PatientConsentConsultHookRequestWithData hookRequestWithData) {
+        setEnvironment();
         String ccda = hookRequestWithData.getPayload();
         PatientConsentConsultHookResponseWithData hookResponseWithData = new PatientConsentConsultHookResponseWithData();
         try {
@@ -129,6 +127,24 @@ public class CCDAOrchestrationService {
         }
 
         return res;
+    }
+
+    private void setEnvironment() {
+        try {
+            CDS_HOST = PropertyAccessor.getInstance().getProperty(PROPERTY_FILE, "cds.host.url"));
+        } catch (PropertyAccessException e) {
+            log.error(
+                    "PropertyAccessException - Default CDS HOST property not defined in LEAP.properties : {} ",
+                    e);
+        }
+        try {
+            SLS_HOST = PropertyAccessor.getInstance().getProperty(PROPERTY_FILE, "sls.host.url"));
+        } catch (PropertyAccessException e) {
+            log.error(
+                    "PropertyAccessException - Default SLS HOST property not defined in LEAP.properties : {} ",
+                    e);
+        }
+
     }
 
 }
