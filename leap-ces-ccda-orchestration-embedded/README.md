@@ -46,16 +46,29 @@ in your `<repo directory>/test-scripts/ccda-orchestration-embedded/nhin-properti
 
 ![Soap-UI Setup](../docs/assets/soapuiconfig.png?raw=true)
 
+##### **Configure WSDL Locations**
+Schema compliance tests require the absolute path to the WSDL.  This seems to be a bug within the community edition of Soap-UI.
+To update these open each test by double click on it.  Depending on which test, double click on the step, Document Query, or Document Retrieve, or Doc Submission.  This will open the script window for that test.  Click on `Assertions` add double click on the `Schema Compliance` assertion.  Enter value based on list below this.
 
+Note: Project directory is the location the project leap-demos was cloned.  Example; /users/ddecouteau/leap-demos
+
+Document Query -> <project directory>/test-scripts/ccda-orchestration-embedded/soap-ui-project/wsdl/EntityXDR.wsdl
+Document Retrieve -> <project directory>/test-scripts/ccda-orchestration-embedded/soap-ui-project/wsdl/EntityDocRetrieve.wsdl
+Doc Submission -> <project directory>/test-scripts/ccda-orchestration-embedded/soap-ui-project/wsdl/EntityXDR.wsdl
+
+![SchemaCompliance](../docs/assets/schemacompliance.png?raw=true)
 #### **Execute Demonstration**
 
 In Soap-UI under the test suite `LEAP CDS CES Integration Testing` double click on each test case and run by clicking on the `green` play button.  Run this in the listed order as there are dependencies.
 
-Expected test run results are show below.
+Expected test run results are shown below.
 
 ![Soap-UI Results](../docs/assets/ccdatestingresults.png?raw=true)
 
-#### **Implementation Examples**
+#### **Implementation Guidance**
+(Todo)
+
+##### **Build Project**
 
 ##### DocumentQuery Example
 
