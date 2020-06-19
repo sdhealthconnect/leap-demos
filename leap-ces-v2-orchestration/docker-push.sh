@@ -1,3 +1,3 @@
 docker login docker.io
-docker tag 8e09db6fa2fc ddecouteau/leap-ces-v2-orchestration
+docker tag 527a19aa7e51 ddecouteau/leap-ces-v2-orchestration
 docker push ddecouteau/leap-ces-v2-orchestration

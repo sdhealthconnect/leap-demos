@@ -38,11 +38,11 @@ public class V2OrchestrationController {
                     @ApiResponse(responseCode = "404", description = "Authorization of Deny Recieved - Processing of Message has ended")})
     @PostMapping(path = "/processMessage", 
             consumes = {MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, MediaType.TEXT_PLAIN},
-            produces = {MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+            produces = {MediaType.TEXT_PLAIN})
     
     public String processMessage(@RequestBody String content) {
-        Boolean res = orchestrationService.processMessage(content);
+        String res = orchestrationService.processMessage(content);
 
-        return res.toString();
+        return res;
     }
 }
