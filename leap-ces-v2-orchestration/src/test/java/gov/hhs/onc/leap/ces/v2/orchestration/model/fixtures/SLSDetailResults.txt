@@ -1,0 +1,9 @@
+SLS rule SLS-R-0352 (Alcohol Abuse and Alcoholism Information Alcohol-Abuse-ICD-9-SNOMED) matched code 'Alcohol Abuse, unspecified' of 20075091019450031(DG1)
+SLS rule SLS-R-3604 (Alcohol Abuse and Alcoholism Information Alcohol-Abuse-ICD-9-SNOMED) matched code 'Alcohol abuse (disorder)' of fb94dee1-6d56-4792-8dc5-7487e15f4894/78(section
+ [Problem List])
+SLS rule SLS-R-0371 (Alcohol Abuse and Alcoholism Information Alcohol-Abuse-ICD-9-SNOMED) matched code '2.16.840.1.113883.6.103/291.2' of fb94dee1-6d56-4792-8dc5-7487e15f4894/534(section [Problem List])
+SLS rule SLS-R-0349 (Alcohol Abuse and Alcoholism Information Alcohol-Abuse-ICD-9-SNOMED) matched code '2.16.840.1.113883.6.103/305.02' of fb94dee1-6d56-4792-8dc5-7487e15f4894/536(section [Problem List])\nSLS rule SLS-R
+-0353 (Alcohol Abuse and Alcoholism Information Alcohol-Abuse-ICD-9-SNOMED) matched code '2.16.840.1.113883.6.103/303.93' of fb94dee1-6d56-4792-8dc5-7487e15f4894/543(section [Problem List])\n
+SLS rule SLS-R-0341 (HIV/AIDS information sensitivity HIV-Related-Disorders-ICD-9-SNOMED) matched code '2.16.840.1.113883.6.103/V15.89' of fb94dee1-6d56-4792-8dc5-7487e15f4894/573(section [Problem List])\nSLS rule SLS-R-0349 (Alcohol Abuse and Alcoho
+lism Information Alcohol-Abuse-ICD-9-SNOMED) matched code 'ALCOHOL ABUSE, EPISODIC DRINKING BEHAVIOR' of fb94dee1-6d56-4792-8dc5-7487e15f4894/693(s
+ection [Encounters Section])
