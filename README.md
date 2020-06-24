@@ -4,7 +4,7 @@
 
 This repository contains the artifacts for demonstrating integration with the [LEAP Consent Decision Service (CDS)](https://github.com/sdhealthconnect/leap-cds) to enforce patient consent in different exchange use-cases. Currently, the following demos are available:
 
-- HL7 v2 Exchange
+- [HL7 v2 Exchange](#hl7-v2-orchestration-demo)
 
 ## Prerequisites
 - [OpenJDK](https://openjdk.java.net/) 11.0.6_10 or newer
@@ -70,40 +70,31 @@ export LEAP_LOG_LEVEL='WARN'
 ```
 > docker-compose up
 ```
-If you are running Docker locally you can visually validate that all have started by launching the Dashboard.  
-![Docker Dashboard](docs/assets/dockerdashboard.png?raw=true)
+If you are running Docker locally you can validate that all have started using a bash terminal.  
 
-You can also check this via the command line:
+Using the `stats` command:
 ```
 > docker stats
 ```
-or alternatively with this command that includes information as: `CONTAINER ID, IMAGE, COMMAND, CREATED, STATUS, PORTS` 
+or alternatively using the command `ps` that includes information as: `CONTAINER ID, IMAGE, COMMAND, CREATED, STATUS, PORTS` 
 ```
 > docker ps
 ```
-
-## The `HL7v2` Demo
-- Launch the [Swagger UI](http://localhost:9092/swagger-ui.html) and find the method **V2-Message-Controller** or follow
-this [link](http://localhost:9092/swagger-ui/index.html?configUrl=/v3/api-docs/swagger-config#/V2-Message-Controller/processMessage) 
--Click on the "Try It Out" button.
-- Select "text/plain" in Request Body type drop-down list
-- Copy the contents of `./test-script/message-artifacts/v2alcoholabuse.txt` in the Request Body.
-- Click on Execute button.
-
-The following shows a sample output:
-![Swagger-UI](docs/assets/swaggerinterface.png?raw=true)
-
-In your Docker-Compose terminal session you should see the following response
-![Test Response](docs/assets/testoutput.png?raw=true)
-
-Note:  If you wish to run this demo multiple times with this message, keep in mind that the message ID should be changed to a unique value every time. This is the _third_ last field in the HL7v2 message string. For example, change the following message 
+Find below an example of `docker ps` output 
 ```
-MSH|^~\&|SendingApp^‹OID›^ISO|SendingFac^‹OID›^ISO|ReceivingApp^‹OID›^ISO|ReceivingFac^2.16.840.1.113883.20.5^ISO|2007509101832133||ADT^A08^ADT_A01|20075091019450028|D|2.5
+CONTAINER ID        IMAGE                               COMMAND                  CREATED             STATUS              PORTS                               NAMES
+493afbd3e5ba        ddecouteau/leap-ces-ccda-orchestration   "java -Dspring.profi…"   40 seconds ago      Up 38 seconds       0.0.0.0:9093->9093/tcp              leap-ces-ccda-orchestration
+69701e2468e7        ddecouteau/leap-ces-v2-orchestration     "java -Dspring.profi…"   40 seconds ago      Up 37 seconds       0.0.0.0:9092->9092/tcp              leap-ces-v2-orchestration
+3d12c66c1330        ddecouteau/leap-sls-service              "java -Dspring.profi…"   11 minutes ago      Up 38 seconds       0.0.0.0:9091->9091/tcp              leap-sls-service
+af80218bfee4        mysql:latest                             "docker-entrypoint.s…"   11 minutes ago      Up 37 seconds       33060/tcp, 0.0.0.0:3307->3306/tcp   hapi-fhir-mysql
+a84d62caad14        mysql:latest                             "docker-entrypoint.s…"   11 minutes ago      Up 37 seconds       33060/tcp, 0.0.0.0:3308->3306/tcp   leap-mysql
+06e64682d872        ddecouteau/hapi-fhir-jpaserver           "catalina.sh run"        11 minutes ago      Up 38 seconds       0.0.0.0:8080->8080/tcp              hapi-fhir-jpaserver
 ```
-to
-```
-MSH|^~\&|SendingApp^‹OID›^ISO|SendingFac^‹OID›^ISO|ReceivingApp^‹OID›^ISO|ReceivingFac^2.16.840.1.113883.20.5^ISO|2007509101832133||ADT^A08^ADT_A01|20075091019450029|D|2.5
-```
+
+## HL7 V2 Orchestration Demo
+The API will receive a V2 message and will process the Message and check the Authorization Decision.
+[For further information, please follow this link](leap-ces-v2-orchestration/README.md)
+
 
 ## Enable Github Packages for Maven
 In order to build this project, your Maven should be configured to fetch the [`leap-ces-java-clients`](https://github.com/sdhealthconnect/leap-ces-java-clients/packages) dependency from Github packages. Follow the steps below to configure your Maven to use Github packages. For further details refer to the corresponding [Github documentation](https://help.github.com/en/packages/using-github-packages-with-your-projects-ecosystem/configuring-apache-maven-for-use-with-github-packages#authenticating-to-github-packages).

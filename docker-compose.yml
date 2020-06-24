@@ -26,7 +26,8 @@ services:
       HAPI_DB_PASS: ${HAPI_DB_PASS}
     ports:
       - 8080:8080
-      
+
+
   leap-mysql:
       image: mysql:latest
       container_name: leap-mysql
@@ -40,7 +41,8 @@ services:
         - 3308:3306
       volumes:
         - leap-mysql:/var/lib/mysql
-      
+
+
   leap-sls-service:
     image: ddecouteau/leap-sls-service
     container_name: leap-sls-service
@@ -50,16 +52,27 @@ services:
       LEAP_DB_URL: ${LEAP_DB_URL}
     ports:
       - 9091:9091
-      
-  leap-ces-orchestration:
-    image: ddecouteau/leap-ces-orchestration
-    container_name: leap-ces-orchestration
+
+
+  leap-ces-v2-orchestration:
+    image: ddecouteau/leap-ces-v2-orchestration
+    container_name: leap-ces-v2-orchestration
     environment:
-        CDS_HOST_URL: ${CDS_HOST_URL}
-        SLS_HOST_URL: ${SLS_HOST_URL}
-        HAPI_FHIR_URL: ${HAPI_FHIR_URL}
+      CDS_HOST_URL: ${CDS_HOST_URL}
+      SLS_HOST_URL: ${SLS_HOST_URL}
+      HAPI_FHIR_URL: ${HAPI_FHIR_URL}
     ports:
-        - 9092:9092
+      - 9092:9092
+
+  leap-ces-ccda-orchestration:
+    image: ddecouteau/leap-ces-ccda-orchestration
+    container_name: leap-ces-ccda-orchestration
+    environment:
+      CDS_HOST_URL: ${CDS_HOST_URL}
+      SLS_HOST_URL: ${SLS_HOST_URL}
+      HAPI_FHIR_URL: ${HAPI_FHIR_URL}
+    ports:
+      - 9093:9093
 volumes:
   hapi-fhir-mysql:
   leap-mysql:
