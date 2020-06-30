@@ -23,7 +23,7 @@ http://104.196.250.115:8080/Gateway/DocumentSubmission/1_1/EntityService/EntityD
 ## Enviroment setup
 - Setup JAVA_HOME environment variable pointing to the location of the JDK’s installation directory.
 - Setup M2_HOME environment variable pointing to the location of the Maven’s installation directory.  
-- Make sure your Maven is configured to fetch dependencies from Github packages as discussed [below](#enable-github-packages-for-maven)  
+- Make sure your Maven is configured to fetch dependencies from Github packages as discussed [on this section.](../README.md#enable-github-packages-for-maven)  
 
 
 #### **Demonstration Setup**
@@ -64,7 +64,8 @@ There are two ways to resolve this issue
 2) Add manually the absolute path to WSDLs files. 
 
 ###### 1. Enable the local SOAP Mock Server
-The Server uses by default the port 8282, if it is not being used in your local just right click over`MockSoapServer` and press on`Start Minimized`.
+- Disable the WSDL cache on SoapUI Preferences -> WSDL Settings -> `caches abd associates WSDLs locally for offline access and improved performance`  
+- The Server uses by default the port 8282, if it is not being used in your local just right click over`MockSoapServer` and press on`Start Minimized`.
 
 ###### 2. Add absolute paths to WSDL files
 If the server explained in step above did not work, please follow next instructions
