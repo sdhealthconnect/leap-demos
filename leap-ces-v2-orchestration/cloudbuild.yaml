@@ -9,8 +9,7 @@ steps:
            '--build-arg',
            'ARG_HAPI_FHIR_URL=${_HAPI_FHIR_URL}',
            '-t',
-           'gcr.io/sdhc-leap-v2/github.com/sdhealthconnect/leap-demos:$COMMIT_SHA', '.']
-    dir: 'leap-ces-v2-orchestration'
+           'gcr.io/sdhc-leap-v2/github.com/sdhealthconnect/leap-demos:$COMMIT_SHA', './leap-ces-v2-orchestration']
   # Push the container image to Container Registry
   - name: 'gcr.io/cloud-builders/docker'
     args: ['push', 'gcr.io/sdhc-leap-v2/github.com/sdhealthconnect/leap-demos:$COMMIT_SHA']
