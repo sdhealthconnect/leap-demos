@@ -13,4 +13,4 @@ ENV SLS_HOST_URL=${ARG_SLS_HOST_URL}
 ENV HAPI_FHIR_URL=${ARG_HAPI_FHIR_URL}
 
 COPY ${JAR_FILE} app.jar
-ENTRYPOINT ["java","-Dspring.profiles.active=docker","-jar","/app.jar"]
+ENTRYPOINT ["java", "-Dspring.profiles.active=docker", "-Dserver.port=${PORT}", "-jar", "/app.jar"]
