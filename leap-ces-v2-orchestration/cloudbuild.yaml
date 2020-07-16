@@ -1,0 +1,29 @@
+steps:
+  # Build the container image
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build',
+           '--build-arg',
+           'ARG_SLS_HOST_URL=${_SLS_HOST_URL}',
+           '--build-arg',
+           'ARG_CDS_HOST_URL=${_CDS_HOST_URL}',
+           '--build-arg',
+           'ARG_HAPI_FHIR_URL=${_HAPI_FHIR_URL}',
+           '-t',
+           'gcr.io/sdhc-leap-v2/github.com/sdhealthconnect/leap-demos:$COMMIT_SHA', '.']
+  # Push the container image to Container Registry
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/sdhc-leap-v2/github.com/sdhealthconnect/leap-demos:$COMMIT_SHA']
+  # Deploy container image to Cloud Run
+  - name: 'gcr.io/google/com/cloudsdktool/cloud-sdk'
+    entrypoint: gcloud
+    args: ['run',
+           'deploy',
+           'SERVICE-NAME',
+           '--image',
+           'gcr.io/sdhc-leap-v2/github.com/sdhealthconnect/leap-demos:$COMMIT_SHA',
+           '--region',
+           'REGION',
+           '--platform',
+           'managed']
+images:
+  - 'gcr.io/sdhc-leap-v2/github.com/sdhealthconnect/leap-demos:$COMMIT_SHA'
