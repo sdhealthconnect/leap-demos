@@ -2,7 +2,7 @@ FROM maven:3.6.3-jdk-11 as builder
 ARG GITHUB_USERNAME
 ARG GITHUB_PWD
 # Copy local code to the container image.
-WORKDIR leap-demo
+WORKDIR leap-demos
 COPY leap-ces-ccda-orchestration leap-ces-ccda-orchestration
 COPY leap-ces-commons leap-ces-commons
 COPY leap-ces-fhir-client leap-ces-fhir-client
@@ -23,6 +23,7 @@ RUN echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\
           </settings>" > settings.xml
 # Build a release artifact.
 RUN mvn clean install -DskipTests -s settings.xml
+RUN ls -la /leap-demos/leap-ces-v2-orchestration/target/*
 
 FROM openjdk:11-jdk
 ARG JAR_FILE=target/leap-ces-v2-orchestration-0.0.1.war
@@ -37,6 +38,5 @@ ENV CDS_HOST_URL=${ARG_CDS_HOST_URL}
 ENV SLS_HOST_URL=${ARG_SLS_HOST_URL}
 ENV HAPI_FHIR_URL=${ARG_HAPI_FHIR_URL}
 
-COPY --from=builder /leap-demos/${JAR_FILE} app.jar
-RUN ls -la
+COPY --from=builder /leap-demos/leap-ces-v2-orchestration/${JAR_FILE} app.jar
 ENTRYPOINT ["java","-Dspring.profiles.active=docker","-jar","/app.jar"]
