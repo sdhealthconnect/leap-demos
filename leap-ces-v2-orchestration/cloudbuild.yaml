@@ -22,7 +22,6 @@ steps:
     args: ['push', 'gcr.io/sdhc-leap-v2/github.com/sdhealthconnect/leap-demos:$COMMIT_SHA']
   # Deploy container image to Cloud Run
   - name: 'gcr.io/cloud-builders/gcloud'
-    entrypoint: gcloud
     args: ['run',
            'deploy',
            '${_SERVICE_NAME}',
