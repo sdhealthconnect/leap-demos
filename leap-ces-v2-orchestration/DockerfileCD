@@ -37,7 +37,6 @@ ARG ARG_HAPI_FHIR_URL
 ENV CDS_HOST_URL=${ARG_CDS_HOST_URL}
 ENV SLS_HOST_URL=${ARG_SLS_HOST_URL}
 ENV HAPI_FHIR_URL=${ARG_HAPI_FHIR_URL}
-ENV PORT=${ARG_PORT}
 
 COPY --from=builder /leap-demos/leap-ces-v2-orchestration/${JAR_FILE} app.jar
 ENTRYPOINT ["java", "-Dspring.profiles.active=docker", "-Dserver.port=${PORT}", "-jar", "/app.jar"]
