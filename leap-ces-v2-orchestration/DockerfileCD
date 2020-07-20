@@ -24,6 +24,7 @@ RUN echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\
 # Build a release artifact.
 RUN mvn clean install -DskipTests -s settings.xml
 RUN ls -la /leap-demos/leap-ces-v2-orchestration/target/*
+
 FROM openjdk:11-jdk
 ARG JAR_FILE=target/leap-ces-v2-orchestration-0.0.1.war
 
@@ -31,7 +32,6 @@ ARG JAR_FILE=target/leap-ces-v2-orchestration-0.0.1.war
 ARG ARG_CDS_HOST_URL
 ARG ARG_SLS_HOST_URL
 ARG ARG_HAPI_FHIR_URL
-ARG ARG_PORT
 
 # Environment Variables declaration, needed to execute stand-alone Dockerfile with custom argumens if they are specified
 ENV CDS_HOST_URL=${ARG_CDS_HOST_URL}
