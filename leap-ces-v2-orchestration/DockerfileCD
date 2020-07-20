@@ -24,6 +24,7 @@ RUN echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\
 # Build a release artifact.
 RUN mvn clean install -DskipTests -s settings.xml
 RUN ls -la /leap-demos/leap-ces-v2-orchestration/target/*
+
 FROM openjdk:11-jdk
 ARG JAR_FILE=target/leap-ces-v2-orchestration-0.0.1.war
 
