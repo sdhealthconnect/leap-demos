@@ -1,0 +1,32 @@
+server:
+  tomcat:
+    protocol-header: x-forwarded-proto
+    remote-ip-header: x-forwarded-for
+
+spring:
+    profiles:
+        active: local
+        
+logging:
+  file: /tmp/f.log
+  level:
+    root: INFO
+    gov.hhs.onc: DEBUG
+    
+nlp:
+    enabled: false
+
+info:
+  app:
+    name: LEAP V2 Demo Orchestration
+cds:
+  host:
+    url: http://someurl
+
+sls:
+  host:
+    url: http://someurl
+
+fhir:
+  r4:
+    baseurl: http://someurl
