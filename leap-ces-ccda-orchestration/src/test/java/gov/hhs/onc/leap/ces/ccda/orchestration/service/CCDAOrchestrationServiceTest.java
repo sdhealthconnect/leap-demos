@@ -29,9 +29,8 @@ import java.util.logging.Logger;
 public class CCDAOrchestrationServiceTest {
     private static final Logger LOGGER = Logger.getLogger(CCDAOrchestrationServiceTest.class.getName());
     //orchestration endpoint
-    private String host =  "http://34.94.253.50:9093";
+    private String host =  "https://sdhc-leap-ccda-axz2tb4tma-uc.a.run.app";
     private String endpoint;
-    private String baseDirectory = "/Users/duanedecouteau/leap-demos/test-scripts/message-artifacts/";
 
     @Test
     public void processCCDADocumentCardTest1() throws Exception {
@@ -58,15 +57,7 @@ public class CCDAOrchestrationServiceTest {
         PatientConsentConsultHookRequestWithData hookRequestWithData = new PatientConsentConsultHookRequestWithData();
         hookRequestWithData.setHookRequest(hookRequest);
         hookRequestWithData.setPayload(sampleCCDA);
-
-        ObjectMapper mapper = new ObjectMapper();
-        String request = mapper.writeValueAsString(hookRequestWithData);
-        //writeRequestToFile(request, "CCDACardTestWithDcoument.json");
-
-        String result = makeRequest(request);
-
-        //System.out.println(result);
-
+        String result = doRequest(hookRequestWithData);
     }
 
     @Test
@@ -112,14 +103,7 @@ public class CCDAOrchestrationServiceTest {
         PatientConsentConsultXacmlRequestWithData xacmlRequestWithData  = new PatientConsentConsultXacmlRequestWithData();
         xacmlRequestWithData.setPayload(sampleCCDA);
         xacmlRequestWithData.setXacmlRequest(xacmlRequest);
-
-        ObjectMapper mapper = new ObjectMapper();
-        String requestString = mapper.writeValueAsString(xacmlRequestWithData);
-        //writeRequestToFile(requestString, "CCDAXacmlTestWithDocument.json");
-
-        String result = makeRequest(requestString);
-
-        //System.out.println(result);
+        String result = doRequest(xacmlRequestWithData);
     }
 
     @Test
@@ -140,15 +124,7 @@ public class CCDAOrchestrationServiceTest {
                         .setContext(context)
                         .setHook("patient-consent-consult")
                         .setHookInstance("123456");
-
-
-        ObjectMapper mapper = new ObjectMapper();
-        String request = mapper.writeValueAsString(hookRequest);
-        //writeRequestToFile(request, "CCDACardAuthTest.json");
-
-        String result = makeRequest(request);
-
-        //System.out.println(result);
+        String result = doRequest(hookRequest);
     }
 
     @Test
@@ -186,14 +162,7 @@ public class CCDAOrchestrationServiceTest {
         action.setAttribute(Arrays.asList(new StringAttribute[] {actionAttrScope, actionAttrPOU}));
         request.setAction(Arrays.asList(action));
         xacmlRequest.setRequest(request);
-        ObjectMapper mapper = new ObjectMapper();
-        String xacmlRequestString = mapper.writeValueAsString(xacmlRequest);
-        //writeRequestToFile(xacmlRequestString, "CCDAXacmlTest.json");
-
-        String result = makeRequest(xacmlRequestString);
-
-        //System.out.println(result);
-
+        String result = doRequest(xacmlRequest);
     }
 
     private String makeRequest(String request) throws IOException {
@@ -226,16 +195,9 @@ public class CCDAOrchestrationServiceTest {
         return response.toString();
     }
 
-    private void writeRequestToFile(String requestObject, String fileName) {
-        try {
-            fileName = baseDirectory+fileName;
-            BufferedWriter writer = new BufferedWriter(new FileWriter(fileName));
-            writer.write(requestObject);
-
-            writer.close();
-        }
-        catch (IOException ix) {
-            LOGGER.log(Level.WARNING, "Failed to write request. "+ix.getMessage());
-        }
+    private String doRequest(final Object reqData) throws IOException {
+        ObjectMapper mapper = new ObjectMapper();
+        String request = mapper.writeValueAsString(reqData);
+        return makeRequest(request);
     }
 }
