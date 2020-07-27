@@ -5,19 +5,21 @@ import gov.hhs.onc.leap.ces.common.clients.model.card.Actor;
 import gov.hhs.onc.leap.ces.common.clients.model.card.Context;
 import gov.hhs.onc.leap.ces.common.clients.model.card.PatientConsentConsultHookRequest;
 import gov.hhs.onc.leap.ces.common.clients.model.card.PatientId;
-import gov.hhs.onc.leap.ces.common.clients.model.xacml.AccessSubject;
-import gov.hhs.onc.leap.ces.common.clients.model.xacml.Action;
-import gov.hhs.onc.leap.ces.common.clients.model.xacml.ConceptAttribute;
-import gov.hhs.onc.leap.ces.common.clients.model.xacml.Request;
-import gov.hhs.onc.leap.ces.common.clients.model.xacml.Resource;
-import gov.hhs.onc.leap.ces.common.clients.model.xacml.StringAttribute;
-import gov.hhs.onc.leap.ces.common.clients.model.xacml.SystemValue;
-import gov.hhs.onc.leap.ces.common.clients.model.xacml.XacmlRequest;
+import gov.hhs.onc.leap.ces.common.clients.model.xacml.*;
 import gov.hhs.onc.leap.ces.orchestration.cds.PatientConsentConsultHookRequestWithData;
 import gov.hhs.onc.leap.ces.orchestration.cds.PatientConsentConsultXacmlRequestWithData;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.file.Files;
@@ -26,10 +28,24 @@ import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * Creating an Application context configuration for this test
+ */
+@SpringBootApplication
+class TestContextConfiguration {
+
+}
+
+@RunWith(SpringJUnit4ClassRunner.class)
+@SpringBootTest(classes = TestContextConfiguration.class)
+@ActiveProfiles("test")
 public class CCDAOrchestrationServiceTest {
     private static final Logger LOGGER = Logger.getLogger(CCDAOrchestrationServiceTest.class.getName());
+
     //orchestration endpoint
-    private String host =  "https://sdhc-leap-ccda-axz2tb4tma-uc.a.run.app";
+    @Value("${ccda.host.url}")
+    private String host;
+
     private String endpoint;
 
     @Test
