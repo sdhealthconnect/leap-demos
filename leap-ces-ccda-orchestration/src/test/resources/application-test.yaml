@@ -1,0 +1,11 @@
+ccda:
+  host:
+    url: https://sdhc-leap-ccda-axz2tb4tma-uc.a.run.app
+
+cds:
+  host:
+    url: http://someurl
+
+sls:
+  host:
+    url: http://someurl
