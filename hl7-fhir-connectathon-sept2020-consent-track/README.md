@@ -10,6 +10,7 @@ This track leverages the May 2020  Security Labeling Track which addressed FHIRÂ
 Registration for the September Virtual HL7 FHIRÂ® Connectathon is now open! Early-bird rates are currently $150 for members and $250 for non-members and will end on August 21, 2020. After August 21st the rates will increase to $200 for members and $300 for non-members.
 
 Registration for this connectathon can be found at; https://www.hl7.org/events/fhir/connectathon/2020/09/
+
 ## Agenda
 
 Day 1
@@ -23,7 +24,7 @@ Day 2
 - Closing Remarks
 - Report out to FHIR & SOA Teams 
  
-##  Requirements
+## Requirements
 Participants are expected to provide one or many of the following, FHIR Consent Clients, Consent Decisioning Service, Consent Enforcement Service, or Security Labeling Services that meets the requirements of the track. 
 Update the following Google Sheet with information about yourself and the implementation you will be demonstrating @ https://docs.google.com/spreadsheets/d/1q4HL1Jt3GXHTnoWRekKDsBdoicnMbBUom7J1B7WSTbI/edit?usp=sharing.
 
@@ -105,13 +106,14 @@ Connectathon examples are available by cloning the LEAP Demos repository
 > cd leap-demos/hl7-fhir-connectathon-sept2020-consent-track/examples
 ```
 
-###  Use Case - Privacy Consent
 
-###  Use Case - Informed Consent
+### Use Case - Privacy Consent
 
-###  Use Case - Research
+### Use Case - Informed Consent
 
-###  Use Case - Advanced Directive
+### Use Case - Research
+
+### Use Case - Advanced Directive
 
 
 
