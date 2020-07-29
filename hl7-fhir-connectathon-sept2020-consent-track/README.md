@@ -11,6 +11,19 @@ Registration for the September Virtual HL7 FHIR® Connectathon is now open! Earl
 
 Registration for this connectathon can be found at; https://www.hl7.org/events/fhir/connectathon/2020/09/
 
+## Agenda
+
+Day 1
+- Introductions
+- Updates on Consent Resource, Overview of Track Requirements
+- HHS ONC LEAP Demonstrations
+- Participant Q&A and Support via Chat
+
+Day 2
+- Participant Demonstrations
+- Closing Remarks
+- Report out to FHIR & SOA Teams 
+ 
 ## Requirements
 Participants are expected to provide one or many of the following, FHIR Consent Clients, Consent Decisioning Service, Consent Enforcement Service, or Security Labeling Services that meets the requirements of the track. 
 Update the following Google Sheet with information about yourself and the implementation you will be demonstrating @ https://docs.google.com/spreadsheets/d/1q4HL1Jt3GXHTnoWRekKDsBdoicnMbBUom7J1B7WSTbI/edit?usp=sharing.
@@ -92,6 +105,7 @@ Connectathon examples are available by cloning the LEAP Demos repository
 > git clone https://github.com/sdhealthconnect/leap-demos.git
 > cd leap-demos/hl7-fhir-connectathon-sept2020-consent-track/examples
 ```
+
 
 ### Use Case - Privacy Consent
 
