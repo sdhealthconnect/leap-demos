@@ -6,7 +6,7 @@
 /leap-ces-ccda-orchestration/target/
 /leap-demos/target/
 /leap-ces-ccda-orchestration-embedded/target/
-
+**/.idea
 **/.classpath
 **/.project
 **/*.prefs
