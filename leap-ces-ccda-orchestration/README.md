@@ -9,6 +9,30 @@ API Documentation can be found at;
 
 https://sdhc-leap-ccda-axz2tb4tma-uc.a.run.app/swagger-ui.html
 
+There are 5 core RESTful operations with 4 providing a CDSHooks or XACML flavor. These are implementation examples 
+to provide you with a starting point, your implementation vary significantly but have identical outcomes.
+
+**Authorization Requests**
+These methods provide auditing of authorization request and decision.
+
+ccdaorchestration/requestAuthorizationWithCDSHooks - This is layered on top of the CDSHooks java client.
+
+cddaorchestration/requestAuthorizationWithXacml - This is layered on top of the XACML java client.
+
+ **Protecting Document by Enforcing Authorization Decision and Obligations**
+ These methods provide full orchestration of Authorization, Security Labeling Service, and document manipulation base on 
+ obligations.
+ 
+ ccdaorchestration/processDocumentWithCDSHooks - This provides a CDSHooks implementation of enforcement.
+ 
+ ccdaorchestration/processDocumentWithXacml - This provides a XACML implementation of enforcement.
+ 
+ **Protecting Document by Enforcing Obligations**
+ This provides a method where an Organization policy may override patient consent constraints.  Example, 
+ and organization may require REDACT of all where confidentiality is "R" such as 42 CFR Part 2 restrictions.
+ 
+ ccdaorchestration/processDocumentWithObligation
+
 
 ## Generic eHx Flows
 These examples assume CONNECT-Solution, Aurion, or equivalent 5.x implementations.

@@ -12,6 +12,8 @@ import java.util.List;
 public class  FHIRAudit {
     private PatientConsentConsultHookRequest hookRequest;
     private PatientConsentConsultHookResponse hookResponse;
+    private PatientConsentConsultXacmlResponse xacmlResponse;
+    private PatientConsentConsultXacmlRequest xacmlRequest;
     private String decision;
 
     public void auditConsentDecision(PatientConsentConsultHookRequest hookRequest, PatientConsentConsultHookResponse hookResponse) {
@@ -96,5 +98,6 @@ public class  FHIRAudit {
         Bundle bundle = client.createAndExecuteBundle(auditEvent);
 
     }
+
 
 }
