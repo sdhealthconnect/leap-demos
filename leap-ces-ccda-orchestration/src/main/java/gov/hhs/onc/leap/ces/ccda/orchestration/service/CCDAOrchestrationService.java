@@ -242,11 +242,20 @@ public class CCDAOrchestrationService {
     }
 
     private void auditConsentDecisionCDSHooks() {
-        fhirAudit.auditConsentDecision(hookRequest, hookResponse);
+        try {
+            fhirAudit.auditConsentDecision(hookRequest, hookResponse);
+        }
+        catch  (Exception ex) {
+            ex.printStackTrace();
+        }
     }
 
     private void auditConsentDecisionXacml() {
-        fhirAudit.auditConsentDecision(xacmlRequest, xacmlResponse);
+        try {
+            fhirAudit.auditConsentDecision(xacmlRequest, xacmlResponse);
+        }
+        catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
-
 }
