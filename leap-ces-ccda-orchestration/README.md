@@ -9,7 +9,7 @@ API Documentation can be found at;
 
 https://sdhc-leap-ccda-axz2tb4tma-uc.a.run.app/swagger-ui.html
 
-There are 5 core RESTful operations with 4 providing a CDSHooks or XACML flavor. These are implementation examples 
+There five (5) RESTful operations in this demonstration suite. Four (4) of which utilize CDSHooks or XACML. These are implementation examples 
 to provide you with a starting point, your implementation vary significantly but have identical outcomes.
 
 **Authorization Requests**
@@ -28,8 +28,8 @@ cddaorchestration/requestAuthorizationWithXacml - This is layered on top of the 
  ccdaorchestration/processDocumentWithXacml - This provides a XACML implementation of enforcement.
  
  **Protecting Document by Enforcing Obligations**
- This provides a method where an Organization policy may override patient consent constraints.  Example, 
- and organization may require REDACT of all where confidentiality is "R" such as 42 CFR Part 2 restrictions.
+ This provides a method where multiple documents may exist in a Directed Exchange or an Organization policy may override patient consent constraints.  Example, 
+ and organization may require REDACT action where confidentiality is "R" such as 42 CFR Part 2 restrictions.
  
  ccdaorchestration/processDocumentWithObligation
 
@@ -53,8 +53,10 @@ This call to LEAP CCDA CES Orchestration would typically be placed in the Docume
 ![Document Submit](./src/main/resources/images/GenericDocSubmit.png?raw=true)
 
 
-
-
 ## Generic Directed Exchange Flows
+This outbound message flow identifies integration points with LEAP CES and a CONNECT-Solution 5.4 DirectSenderImpl, which extends the DirectAdapter, implementing a DirectSender.
+
+**Outbound Message Flow**
+![Directed Exchange](./src/main/resources/images/DirectedExchange.png?raw=true)
  
 

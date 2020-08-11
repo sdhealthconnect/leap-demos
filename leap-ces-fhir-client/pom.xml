@@ -83,11 +83,5 @@
             <artifactId>spring-test</artifactId>
             <version>5.2.3.RELEASE</version>
         </dependency>
-        <dependency>
-            <groupId>gov.hhs.onc.leap</groupId>
-            <artifactId>leap-ces-clients</artifactId>
-            <version>0.2.0</version>
-            <scope>compile</scope>
-        </dependency>
     </dependencies>
 </project>

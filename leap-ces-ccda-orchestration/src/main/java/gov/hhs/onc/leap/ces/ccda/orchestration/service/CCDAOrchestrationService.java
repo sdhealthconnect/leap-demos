@@ -41,7 +41,6 @@ public class CCDAOrchestrationService {
     private PatientConsentConsultHookRequest hookRequest;
     private PatientConsentConsultHookResponse hookResponse;
     private PatientConsentConsultXacmlRequestWithData xacmlRequestWithData;
-    private PatientConsentConsultXacmlResponseWithData xacmlResponseWithData;
     private XacmlRequest xacmlRequest;
     private XacmlResponse xacmlResponse;
 
@@ -119,6 +118,7 @@ public class CCDAOrchestrationService {
 
     public PatientConsentConsultXacmlResponseWithData processDocumentXacml(PatientConsentConsultXacmlRequestWithData xacmlRequestWithData) {
         String ccda = xacmlRequestWithData.getPayload();
+        PatientConsentConsultXacmlResponseWithData xacmlResponseWithData = new PatientConsentConsultXacmlResponseWithData();
         try {
             this.xacmlRequestWithData = xacmlRequestWithData;
             this.xacmlRequest = xacmlRequestWithData.getXacmlRequest();
@@ -127,10 +127,11 @@ public class CCDAOrchestrationService {
             xacmlResponse = xacmlClient.getConsentDecision(xacmlRequest);
             Response response = xacmlResponse.getResponse().get(0);
             decision = response.getDecision();
-            if ("CONSENT_PERMIT".equals(decision)) {
+            if ("Permit".equals(decision)) {
                 action = response.getObligations().get(0).getObligationId().getCode();
                 label = response.getObligations().get(0).getAttributeAssignments().get(0).getSystemCodes().get(0).getCode();
             }
+            System.out.println("Decision: "+decision+" Action: "+action+" Label: "+label);
             log.info("Decision: "+decision+" Action: "+action+" Label: "+label);
             if (response.getDecision().equals("Permit")) {
                 Obligations obligation = response.getObligations().get(0);
@@ -242,11 +243,20 @@ public class CCDAOrchestrationService {
     }
 
     private void auditConsentDecisionCDSHooks() {
-        fhirAudit.auditConsentDecision(hookRequest, hookResponse);
+        try {
+            fhirAudit.auditConsentDecision(hookRequest, hookResponse);
+        }
+        catch  (Exception ex) {
+            ex.printStackTrace();
+        }
     }
 
     private void auditConsentDecisionXacml() {
-        fhirAudit.auditConsentDecision(xacmlRequest, xacmlResponse);
+        try {
+            fhirAudit.auditConsentDecision(xacmlRequest, xacmlResponse);
+        }
+        catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
-
 }

@@ -76,7 +76,7 @@ public class CCDAOrchestrationServiceTest {
         String result = doRequest(hookRequestWithData);
     }
 
-    @Test
+
     public void processCCDADocumentXacmlTest2() throws  IOException {
         endpoint = "/ccdaorchestration/processDocumentWithXACML";
         String sampleCCDA = new String(Files.readAllBytes(Paths.get(
@@ -121,6 +121,7 @@ public class CCDAOrchestrationServiceTest {
         xacmlRequestWithData.setXacmlRequest(xacmlRequest);
         String result = doRequest(xacmlRequestWithData);
     }
+
 
     @Test
     public void requestAuthorizationWithCDSHooksTest3() throws IOException {
