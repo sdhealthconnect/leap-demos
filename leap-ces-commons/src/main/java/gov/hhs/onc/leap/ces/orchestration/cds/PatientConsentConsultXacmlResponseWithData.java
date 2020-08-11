@@ -21,7 +21,7 @@ public class PatientConsentConsultXacmlResponseWithData {
         return xacmlResponse;
     }
 
-    @JsonProperty("xacmlRequest")
+    @JsonProperty("xacmlResponse")
     public void setXacmlResponse(XacmlResponse xacmlResponse) {
         this.xacmlResponse = xacmlResponse;
     }
