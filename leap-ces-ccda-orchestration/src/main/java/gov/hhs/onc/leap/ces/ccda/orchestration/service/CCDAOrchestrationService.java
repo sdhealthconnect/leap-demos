@@ -119,6 +119,7 @@ public class CCDAOrchestrationService {
 
     public PatientConsentConsultXacmlResponseWithData processDocumentXacml(PatientConsentConsultXacmlRequestWithData xacmlRequestWithData) {
         String ccda = xacmlRequestWithData.getPayload();
+        xacmlResponseWithData = new PatientConsentConsultXacmlResponseWithData();
         try {
             this.xacmlRequestWithData = xacmlRequestWithData;
             this.xacmlRequest = xacmlRequestWithData.getXacmlRequest();
