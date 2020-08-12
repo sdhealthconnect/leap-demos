@@ -4,8 +4,6 @@ This project hosts the technical requirements and test artifacts for the Consent
 ## Goal
 This track will focus on using FHIR consent in a number of key use cases including but not limited the use of a Consent Decision Service for use case around privacy, consent for treatment, and participation is research.  In addition aspects of Consent Enforcement, Sharing, and discovery will be explored.
 
-This track leverages the May 2020  Security Labeling Track which addressed FHIR® Data Segmentation for Privacy Implementation Guide(DS4P IG) requirements.
-
 ## Registration
 Registration for the September Virtual HL7 FHIR® Connectathon is now open! Early-bird rates are currently $150 for members and $250 for non-members and will end on August 21, 2020. After August 21st the rates will increase to $200 for members and $300 for non-members.
 
