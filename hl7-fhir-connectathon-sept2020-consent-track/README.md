@@ -107,13 +107,69 @@ Connectathon examples are available by cloning the LEAP Demos repository
 ```
 
 
-### Use Case - Privacy Consent
+### Privacy Consent Scenarios
+Assuming a **Purpose of Use** of **"TREAT"**;
 
-### Use Case - Informed Consent
+a) Patient "A" wishes to opt-in to SDHealthConnect.org HIE with No restrictions
 
-### Use Case - Research
+b) Patient "B" wishes to opt-in to SDHealthConnect.org HIE but wishes to restrict access to their sensitive information.
 
-### Use Case - Advanced Directive
+c) Patient "C" wishes to opt-out of SDHealthConnect.org HIE.
+
+d) Patient "D" wishes to grant access to "Dr. Bob" at Kaiser Permanente with no restrictions.
+
+e) Patient "E" wishes to grant access to "Dr. Bob" at Kaiser Permanente by with to restrict access to their sensitive information.
+
+f) Patient "F" wishes to grant access to "Dr. Bob" at Kaiser Permanente with no restrictions for only one day.
+
+g) Patient "G" wishes to deny access to "Dr. Bob" at Kaiser Permanente.
+
+**Objectives:**
+
+Consent Client:  Demonstrate the ability to create, update, retrieve, and revoke the FHIR consent.
+
+Consent Decision Service: Demonstrate the ability to return authorization and (if any) obligations from above FHIR consents.
+
+Consent Enforcement Service: Demonstrate the ability to enforce the authorization decision and any obligations, such as redaction
+of sensitive PHI. 
+
+**Bonus** - Demonstrate enforcement when exchange of patients healthcare information is based on V2, eHx, or Direct
+
+**Bonus** - Demonstrate how Organization Policy may sometimes override constraints levied with the patient's consent.
+
+**Bonus** - Demonstrate Emergency Access when Purpose of Use is **ETREAT**
+
+### Informed Consent Scenario
+Assumes a **Purpose of Use** of **"TREAT"**
+
+a) Patient "H" is having minor surgery on his left shoulder.  "Dr. Bob" will be the attending orthopedic surgeon. "Dr. Bob" reviews
+with Patient "H" the planned procedure, any risks, and other expectations such as recovery.
+
+**Objective:**
+
+Consent Client:  Demostrate the creation and retrieval of FHIR resource for Informed Consent capturing both 
+Patient "H" and "Dr. Bob's" signature.
+
+Consent Decision Service:  Demonstrate CDS interactions (authoirzation decision) as part of pre-surgical checklist flow.
+
+### Research Consent Scenario
+Assumes a **Purpose of Use** of **"HRESCH"**
+
+a) Patient "I" as has recently recovered from severe case of COVID-19 requiring hospitalization.  "Dr. Dave" at Kaiser Permanente
+ suggests that she participate in RESEARCH project at University of Arizona to determine long-term effects of this virus.  She agrees.
+ 
+**Objectives:**
+
+Consent Client: Demonstrate ability to create, update, retrieve, and revoke when information exchange is for research purposes.
+
+Consent Decision Service: Demonstrate the ability to return authorization and (if any) obligations from above FHIR consents.
+
+Consent Enforcement Service: Demonstrate enforcement of RESEARCH Consent authorization decision and any obligations returned from CDS.
+
+**Bonus** Demonstration how Consent Enforcement Service can facilitate De-Identification of patient healthcare record.
+
+### Advanced Directive Scenario
+TBD
 
 
 
