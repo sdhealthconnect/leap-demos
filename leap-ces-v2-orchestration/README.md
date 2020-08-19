@@ -32,12 +32,3 @@ The following shows a sample output:
 
 In your Docker-Compose terminal session you should see the following response
 ![Test Response](../docs/assets/testoutput.png?raw=true)
-
-Note:  If you wish to run this demo multiple times with this message, keep in mind that the message ID should be changed to a unique value every time. This is the _third_ last field in the HL7v2 message string. For example, change the following message 
-```
-MSH|^~\&|SendingApp^‹OID›^ISO|SendingFac^‹OID›^ISO|ReceivingApp^‹OID›^ISO|ReceivingFac^2.16.840.1.113883.20.5^ISO|2007509101832133||ADT^A08^ADT_A01|20075091019450028|D|2.5
-```
-to
-```
-MSH|^~\&|SendingApp^‹OID›^ISO|SendingFac^‹OID›^ISO|ReceivingApp^‹OID›^ISO|ReceivingFac^2.16.840.1.113883.20.5^ISO|2007509101832133||ADT^A08^ADT_A01|20075091019450029|D|2.5
-```
