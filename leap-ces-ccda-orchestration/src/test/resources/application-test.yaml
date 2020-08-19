@@ -9,3 +9,7 @@ cds:
 sls:
   host:
     url: http://someurl
+
+hapi:
+  fhir:
+    url:  http://34.94.253.50:8080/hapi-fhir-jpaserver/fhir
