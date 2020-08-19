@@ -15,7 +15,9 @@ Day 1
 - Introductions
 - Updates on Consent Resource, Overview of Track Requirements
 - HHS ONC LEAP Demonstrations
-- Participant Q&A and Support via Chat
+- Participant Q&A and Support via Chat - 
+Channel can be found @ https://chat.fhir.org/#narrow/stream/253681-Consent-Decision.20and.20Management.20Services
+
 
 Day 2
 - Participant Demonstrations
