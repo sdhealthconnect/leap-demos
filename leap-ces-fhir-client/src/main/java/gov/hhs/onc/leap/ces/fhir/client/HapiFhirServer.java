@@ -29,7 +29,7 @@ public class HapiFhirServer {
     IGenericClient hapiClient;
 
     @Getter
-    @Value("${fhir.r4.baseurl}")
+    @Value("${hapi.fhir.url}")
     private String baseURL;
 
     @PostConstruct

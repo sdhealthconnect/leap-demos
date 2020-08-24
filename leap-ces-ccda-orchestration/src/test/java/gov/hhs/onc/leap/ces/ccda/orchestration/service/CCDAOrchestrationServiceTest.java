@@ -6,6 +6,7 @@ import gov.hhs.onc.leap.ces.common.clients.model.card.Context;
 import gov.hhs.onc.leap.ces.common.clients.model.card.PatientConsentConsultHookRequest;
 import gov.hhs.onc.leap.ces.common.clients.model.card.PatientId;
 import gov.hhs.onc.leap.ces.common.clients.model.xacml.*;
+import gov.hhs.onc.leap.ces.orchestration.cds.DocumentWithObligations;
 import gov.hhs.onc.leap.ces.orchestration.cds.PatientConsentConsultHookRequestWithData;
 import gov.hhs.onc.leap.ces.orchestration.cds.PatientConsentConsultXacmlRequestWithData;
 import org.junit.Test;
@@ -180,6 +181,23 @@ public class CCDAOrchestrationServiceTest {
         request.setAction(Arrays.asList(action));
         xacmlRequest.setRequest(request);
         String result = doRequest(xacmlRequest);
+    }
+
+    @Test
+    public void processCCDADocumentWithObligationTest5() throws Exception {
+        endpoint = "/ccdaorchestration/processDocumentWithObligation";
+
+        String sampleCCDA = new String(Files.readAllBytes(Paths.get(
+                "src/test/java/gov/hhs/onc/leap/ces/ccda/orchestration/service/fixtures/HIVExampleSLS.xml")),
+                "UTF-8");
+        String obligation = "REDACT";
+
+        DocumentWithObligations documentWithObligations = new DocumentWithObligations();
+        documentWithObligations.setDocument(sampleCCDA);
+        documentWithObligations.setObligation(obligation);
+
+
+        String result = doRequest(documentWithObligations);
     }
 
     private String makeRequest(String request) throws IOException {
