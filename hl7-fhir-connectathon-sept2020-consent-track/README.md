@@ -139,6 +139,8 @@ of sensitive PHI.
 
 **Bonus** - Demonstrate Emergency Access when Purpose of Use is **ETREAT**
 
+**Bonus** - Demonstrate Consent Revocation
+
 ### Informed Consent Scenario
 Assumes a **Purpose of Use** of **"TREAT"**
 
