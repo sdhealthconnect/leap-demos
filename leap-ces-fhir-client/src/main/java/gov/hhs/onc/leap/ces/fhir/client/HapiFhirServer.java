@@ -29,11 +29,22 @@ public class HapiFhirServer {
     IGenericClient hapiClient;
 
     @Getter
-    @Value("${hapi.fhir.url}")
-    private String baseURL;
+    //@Value("${hapi.fhir.url}")
+    private String baseURL = "http://34.94.253.50:8080/hapi-fhir-jpaserver/fhir/";  //default for demonstrations
 
     @PostConstruct
     public void setUp() {
+        ctx = FhirContext.forR4();
+
+        hapiClient = ctx.newRestfulGenericClient(baseURL);
+        hapiClient.registerInterceptor(createLoggingInterceptor());
+
+        log.info("Created hapi client for server: {} ", baseURL);
+    }
+
+    @PostConstruct
+    public void setUp(String baseURL) {
+        this.baseURL = baseURL;
         ctx = FhirContext.forR4();
 
         hapiClient = ctx.newRestfulGenericClient(baseURL);
