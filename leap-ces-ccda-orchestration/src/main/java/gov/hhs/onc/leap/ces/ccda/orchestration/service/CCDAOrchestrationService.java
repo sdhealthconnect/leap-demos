@@ -70,9 +70,16 @@ public class CCDAOrchestrationService {
             Card card = hookResponse.getCards().get(0);
             Extension extension = card.getExtension();
             decision = extension.getDecision();
-            if ("CONSENT_PERMIT".equals(decision)) {
-                action = extension.getObligations().get(0).getObligationId().getCode();
-                label = extension.getObligations().get(0).getParameters().getCodes().get(0).getCode();
+            action = "";
+            label = "";
+            try {
+                if ("CONSENT_PERMIT".equals(decision)) {
+                    action = extension.getObligations().get(0).getObligationId().getCode();
+                    label = extension.getObligations().get(0).getParameters().getCodes().get(0).getCode();
+                }
+            }
+            catch (Exception ex) {
+                //no obligations to process
             }
             log.info("Decision: "+decision+" Action: "+action+" Label: "+label);
             if ("CONSENT_PERMIT".equals(decision)) {
