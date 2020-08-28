@@ -15,6 +15,7 @@ import org.hl7.fhir.r4.model.*;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.UUID;
 
 public class  FHIRAudit {
     private PatientConsentConsultHookRequest hookRequest;
@@ -24,6 +25,8 @@ public class  FHIRAudit {
 
     private String decision;
 
+    private HapiFhirServer client;
+
     public void auditConsentDecision(PatientConsentConsultHookRequest hookRequest, PatientConsentConsultHookResponse hookResponse) {
         this.hookRequest = hookRequest;
         this.hookResponse = hookResponse;
@@ -31,7 +34,7 @@ public class  FHIRAudit {
         decision = hookResponse.getCards().get(0).getExtension().getDecision();
 
         AuditEvent auditEvent = new AuditEvent();
-
+        auditEvent.setId(UUID.randomUUID().toString());
         Coding auditType = new Coding();
         auditType.setCode("110110");
         auditType.setSystem("http://hl7.org/fhir/ValueSet/audit-event-type");
@@ -63,7 +66,8 @@ public class  FHIRAudit {
         Identifier agentId = new Identifier();
         agentId.setId(hookRequest.getContext().getActor().get(0).getValue());
         agentId.setSystem(hookRequest.getContext().getActor().get(0).getSystem());
-
+        agentReference.setIdentifier(agentId);
+        agent.setWho(agentReference);
         auditEvent.addAgent(agent);
 
         Reference patientReference = new Reference();
@@ -101,7 +105,7 @@ public class  FHIRAudit {
 
         auditEvent.setEntity(lEntities);
 
-        HapiFhirServer client = new HapiFhirServer();
+        client = new HapiFhirServer();
         client.setUp();
         Bundle bundle = client.createAndExecuteBundle(auditEvent);
 
@@ -115,6 +119,7 @@ public class  FHIRAudit {
         AuditEvent auditEvent = new AuditEvent();
 
         Coding auditType = new Coding();
+        auditEvent.setId(UUID.randomUUID().toString());
         auditType.setCode("110110");
         auditType.setSystem("http://hl7.org/fhir/ValueSet/audit-event-type");
         auditType.setDisplay("Patient Record");
@@ -163,13 +168,13 @@ public class  FHIRAudit {
         patientSystem = xacmlRequest.getRequest().getResource().get(0).getAttribute().get(0).getAttributeId();
         patientValue = xacmlRequest.getRequest().getResource().get(0).getAttribute().get(0).getValue().get(0).getValue();
 
-
         AuditEvent.AuditEventAgentComponent agent = new AuditEvent.AuditEventAgentComponent();
         Reference agentReference = new Reference();
         Identifier agentId = new Identifier();
         agentId.setId(subjectValue);
         agentId.setSystem(subjectSystem);
-
+        agentReference.setIdentifier(agentId);
+        agent.setWho(agentReference);
         auditEvent.addAgent(agent);
 
         Reference patientReference = new Reference();
@@ -206,7 +211,7 @@ public class  FHIRAudit {
 
         auditEvent.setEntity(lEntities);
 
-        HapiFhirServer client = new HapiFhirServer();
+        client = new HapiFhirServer();
         client.setUp();
         Bundle bundle = client.createAndExecuteBundle(auditEvent);
 

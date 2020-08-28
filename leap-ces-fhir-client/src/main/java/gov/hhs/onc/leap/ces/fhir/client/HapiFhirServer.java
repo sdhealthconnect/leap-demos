@@ -29,8 +29,8 @@ public class HapiFhirServer {
     IGenericClient hapiClient;
 
     @Getter
-    @Value("${hapi.fhir.url}")
-    private String baseURL;
+    //@Value("${hapi.fhir.url}")
+    private String baseURL = "http://34.94.253.50:8080/hapi-fhir-jpaserver/fhir/";  //default for demonstrations
 
     @PostConstruct
     public void setUp() {
@@ -42,7 +42,7 @@ public class HapiFhirServer {
         log.info("Created hapi client for server: {} ", baseURL);
     }
 
-
+    
     public <T extends Resource> Optional<T> findResourceInBundle(Bundle bundle, Class<T> clazz) {
         if (bundle.hasEntry()) {
             if (bundle.getEntry().size() > 1) {

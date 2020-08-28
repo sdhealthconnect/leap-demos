@@ -23,11 +23,9 @@ import javax.ws.rs.core.MediaType;
 @Tag(name = "V2-Message-Controller", description = "CES Example API for Inbound V2 Message Exchange")
 @Slf4j
 public class V2OrchestrationController {
-    public final HapiFhirServer hapiFhirServer;
     public final V2OrchestrationService orchestrationService;
     
-    public V2OrchestrationController(HapiFhirServer hapiFhirServer, V2OrchestrationService orchestrationService) {
-        this.hapiFhirServer = hapiFhirServer;
+    public V2OrchestrationController(V2OrchestrationService orchestrationService) {
         this.orchestrationService = orchestrationService;
     }
 
