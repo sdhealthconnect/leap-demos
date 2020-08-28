@@ -42,7 +42,7 @@ public class HapiFhirServer {
         log.info("Created hapi client for server: {} ", baseURL);
     }
 
-    
+
     public <T extends Resource> Optional<T> findResourceInBundle(Bundle bundle, Class<T> clazz) {
         if (bundle.hasEntry()) {
             if (bundle.getEntry().size() > 1) {
