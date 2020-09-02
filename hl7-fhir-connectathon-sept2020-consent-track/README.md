@@ -12,28 +12,25 @@ Registration for this connectathon can be found at; https://www.hl7.org/events/f
 
 
 ## Agenda
+Please login to your Whova account for additional information on this track.
 
 Day 1 September 9th
 - Connectathon Kick-Off Mtg.  4:00PM-5:00PM ET 
 
 Day 2 - September 10th 9:00AM-6:00PM ET
-Morning Session - https://meet.google.com/bco-kjya-zix
+Morning Session
 - Track Introductions, Updates on Consent Resource, Review of Track Requirements, HHS ONC LEAP Example Demonstrations
-
-
 
 - Participant Q&A and Support via Chat - 
 Channel can be found @ https://chat.fhir.org/#narrow/stream/253681-Consent-Decision.20and.20Management.20Services
 
-- End of Day Recap 5:00PM ET https://meet.google.com/yxg-eeef-swm
+- End of Day Recap 5:00PM ET
 
 Day 3 - September 11th 9:00AM-5:00PM ET
-- Morning Touch Point 9:00AM-10:AM ET https://meet.google.com/ejs-kuwb-ntt
-
-- Participant Demonstrations and Discussion - 12:00PM-As Needed ET https://meet.google.com/bzi-qnmn-vrs
-
+- Morning Touch Point 9:00AM-10:AM ET
+- Participant Demonstrations and Discussion 2:00PM ET - As needed
 - Report out to FHIR WG - 5:00PM ET
-- WRAP-UP 6:00PM ET 
+
  
 ## Requirements
 Participants are expected to provide one or many of the following, FHIR Consent Clients, Consent Decisioning Service, Consent Enforcement Service, or Security Labeling Services that meets the requirements of the track. 
