@@ -1,0 +1,78 @@
+{
+  "resourceType": "Consent",
+  "id": "privacy-consent-scenario-G",
+  "meta": {
+    "versionId": "4",
+    "lastUpdated": "2020-06-15T22:11:27.113+00:00",
+    "source": "#OWUTNDT33XUxQMMn"
+  },
+  "identifier": [
+    {
+      "system": "http://sdhealthconnect.github.io/leap/samples/ids",
+      "value": "privacy-consent-scenario-G"
+    }
+  ],
+  "status": "active",
+  "scope": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/consentscope",
+        "code": "patient-privacy"
+      }
+    ]
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://loinc.org",
+          "code": "59284-6"
+        }
+      ]
+    }
+  ],
+  "patient": {
+    "reference": "Patient/privacy-consent-scenario-G",
+    "display": "ScenarioG,FHIR"
+  },
+  "dateTime": "2020-05-29T16:34:28.273Z",
+  "organization": [
+    {
+      "reference": "Organization/102"
+    }
+  ],
+  "policyRule": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+        "code": "OPTOUT"
+      }
+    ]
+  },
+  "provision": {
+    "period": {
+      "start": "2019-11-01",
+      "end": "2022-01-01"
+    },
+    "provision": [
+      {
+        "type": "deny",
+        "actor": [
+          {
+            "role": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+                  "code": "IRCP"
+                }
+              ]
+            },
+            "reference": {
+              "reference": "Practitioner/privacy-consent-scenario-D-drbob"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}
