@@ -1,0 +1,18 @@
+{
+  "hook": "patient-consent-consult",
+  "hookInstance": "privacy-consent-scenario-A",
+  "context": {
+    "patientId": {
+      "system": "urn:oid:2.2",
+      "value": "D123401"
+    },
+    "scope": "patient-privacy",
+    "purposeOfUse": "TREAT",
+    "actor": [
+      {
+        "system": "urn:ietf:rfc:3986",
+        "value": "urn:oid:1.1.1"
+      }
+    ]
+  }
+}
