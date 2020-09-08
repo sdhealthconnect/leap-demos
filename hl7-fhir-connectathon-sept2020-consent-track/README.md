@@ -113,6 +113,13 @@ Connectathon examples are available by cloning the LEAP Demos repository
 > cd leap-demos/hl7-fhir-connectathon-sept2020-consent-track/examples
 ```
 
+### Consent Decision Testing
+You can test your patients FHIR consent against the LEAP CDS at http://34.94.253.50:9095/swagger-ui.html.  This assumes
+that you have loaded the Patient, Consent, Organization, and/or Pracitioner resource are loaded in the consent repository 
+at http://34.94.253.50:8080/hapi-fhir-jpaserver/fhir for LEAP CDS to act on them.
+
+![Consent Testing Service](./resources/images/fhirconsenttesting.png?raw=true)
+
 
 ### Privacy Consent Scenarios
 Assuming a **Purpose of Use** of **"TREAT"**;

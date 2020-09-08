@@ -2,10 +2,11 @@
   "hook": "patient-consent-consult",
   "hookInstance": "privacy-consent-scenario-A",
   "context": {
-    "patientId": {
+    "patientId": [
+      {
       "system": "urn:oid:2.2",
       "value": "D123401"
-    },
+      }],
     "scope": "patient-privacy",
     "purposeOfUse": "TREAT",
     "actor": [
