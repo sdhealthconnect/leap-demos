@@ -18,6 +18,7 @@
         <module>leap-ces-commons</module>
         <module>leap-ces-v2-orchestration</module>
         <module>leap-ces-ccda-orchestration</module>
+        <module>consent-testing-service</module>
     </modules>
     <properties>
         <java.version>11</java.version>

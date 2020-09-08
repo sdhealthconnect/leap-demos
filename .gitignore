@@ -6,6 +6,7 @@
 /leap-ces-ccda-orchestration/target/
 /leap-demos/target/
 /leap-ces-ccda-orchestration-embedded/target/
+/consent-testing-service/target/
 **/.idea
 **/.classpath
 **/.project
