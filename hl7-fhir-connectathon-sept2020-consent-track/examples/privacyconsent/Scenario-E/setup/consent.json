@@ -57,6 +57,12 @@
     "provision": [
       {
         "type": "deny",
+        "securityLabel": [
+          {
+            "system": "http://terminology.hl7.org/CodeSystem/v3-Confidentiality",
+            "code": "R"
+          }
+        ],
         "actor": [
           {
             "role": {
@@ -88,12 +94,6 @@
                 "code": "correct"
               }
             ]
-          }
-        ],
-        "securityLabel": [
-          {
-            "system": "http://terminology.hl7.org/CodeSystem/v3-Confidentiality",
-            "code": "R"
           }
         ]
       }
