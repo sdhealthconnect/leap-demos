@@ -10,8 +10,8 @@
     "purposeOfUse": "TREAT",
     "actor": [
       {
-        "system": "http://sdhealthconnect.github.io/leap/samples/ids",
-        "value": "privacy-consent-scenario-D-drbob"
+        "system": "http://www.acme.org/practitioners",
+        "value": "5555"
       }
     ]
   }

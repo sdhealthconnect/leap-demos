@@ -1,16 +1,1 @@
-{
-  "cards":[
-    {
-      "summary":"CONSENT_PERMIT",
-      "detail":"There is a patient consent permitting this action.",
-      "indicator":"info",
-      "source":{
-        "label":"Sample",
-        "url":"https://sample-cdms.org"
-      },
-      "extension":{
-        "decision":"CONSENT_PERMIT"
-      }
-    }
-  ]
-}
+{"cards":[{"summary":"CONSENT_PERMIT","detail":"There is a patient consent permitting this action.","indicator":"info","source":{"label":"LEAP Consent Decision Management Service","url":"https://leap-cdms.sdhealthconnect.org"},"extension":{"decision":"CONSENT_PERMIT","obligations":[]}}]}
