@@ -8,6 +8,7 @@ COPY leap-ces-commons leap-ces-commons
 COPY leap-ces-fhir-client leap-ces-fhir-client
 COPY leap-ces-sls-client leap-ces-sls-client
 COPY leap-ces-v2-orchestration leap-ces-v2-orchestration
+COPY consent-testing-service consent-testing-service
 COPY pom.xml pom.xml
 RUN echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\
           <settings xsi:schemaLocation=\"http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd\" xmlns=\"http://maven.apache.org/SETTINGS/1.0.0\"\
