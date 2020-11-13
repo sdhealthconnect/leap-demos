@@ -2,7 +2,7 @@
 This project hosts the technical requirements and test artifacts for the Consent Management and Enforcement Services Track of the HL7® FHIR® Connectathon in January.  
 
 ## Goal
-This track is a follow-on to previous September 2020 connectathon and again will focus on using FHIR consent in a number of key use cases including but not limited the use of a Consent Decision Service for use case around privacy, consent for treatment, and participation is research.  In addition aspects of Consent Enforcement, Sharing, and discovery will be explored.
+This track is a follow-on to previous September 2020 connectathon and again will utilize FHIR consent in a number of key use cases including but not limited the use Consent to "Share", Consent to "Treat", Consent for "Research", and "Advanced Directives". The use of FHIR based Consent Decision Service(CDS), Consent Enforcement Services(CES), Security Labeling Services(SLS), and Privacy Protective Services(PPS) previously demostrated again will lay the foundation for this track.  In addition, we will investigate Patient, and Point-of-Care effacing tools and services, how the interact with workflow and these foundational FHIR services.
 
 ## Registration
 Registration for the January Virtual HL7 FHIR® Connectathon is now open! Early-bird rates are currently $150 for members and $250 for non-members and will end on December 30th, 2020. After December 30th the rates will increase to $250 for members and $375 for non-members.
