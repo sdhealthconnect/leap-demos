@@ -1,0 +1,20 @@
+{
+  "resourceType": "Organization",
+  "id": "privacy-consent-scenario-A-sdhc",
+  "meta": {
+    "versionId": "1",
+    "lastUpdated": "2020-06-15T09:13:47.776+00:00",
+    "source": "#7c0xRlKfR1DjsRCS"
+  },
+  "identifier": [
+    {
+      "system": "urn:ietf:rfc:3986",
+      "value": "urn:oid:1.1.1"
+    },
+    {
+      "system": "http://sdhealthconnect.github.io/leap/samples/ids",
+      "value": "privacy-consent-scenario-A-sdhc"
+    }
+  ],
+  "name": "SDHC FHIR Connectathon"
+}
