@@ -117,7 +117,7 @@ FHIR Exchange (Proxy) - https://leap-fhir-ces.appspot.com
 
 FHIR Consent Testing - http://34.94.253.50:9095/swagger-ui.html
 
-Security Labeling Service (SLS) Testing - http://34.94.253.50:9095/swagger-ui.html
+Security Labeling Service (SLS) Testing - http://34.94.253.50:9091/swagger-ui.html
 
 ## Additional Resources
 Connectathon examples are available by cloning the LEAP Demos repository
