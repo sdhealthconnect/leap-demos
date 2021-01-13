@@ -105,15 +105,19 @@ HAPI-FHIR Consent Repository - http://34.94.253.50:8080/hapi-fhir-jpaserver/fhir
 
 eHealth Exchange Server (Embedded) - http://104.196.250.115:8080
 
-eHealth Exchange Services - https://sdhc-leap-ccda-axz2tb4tma-uc.a.run.app
+eHealth Exchange Services - https://sdhc-leap-ccda-axz2tb4tma-uc.a.run.app/swagger-ui.html
 
-Directed Exchange Services - https://sdhc-leap-ccda-axz2tb4tma-uc.a.run.app
+Directed Exchange Services - https://sdhc-leap-ccda-axz2tb4tma-uc.a.run.app/swagger-ui.html
 
-V2 Exchange Services - https://sdhc-leap-v2-56zrsoidxa-uc.a.run.app
+V2 Exchange Services - https://sdhc-leap-v2-56zrsoidxa-uc.a.run.app/swagger-ui.html
 
 FHIR Exchange (Embedded) - http://35.235.74.117:8080/hapi-fhir-jpaserver/fhir
 
 FHIR Exchange (Proxy) - https://leap-fhir-ces.appspot.com
+
+FHIR Consent Testing - http://34.94.253.50:9095/swagger-ui.html
+
+Security Labeling Service (SLS) Testing - http://34.94.253.50:9095/swagger-ui.html
 
 ## Additional Resources
 Connectathon examples are available by cloning the LEAP Demos repository
