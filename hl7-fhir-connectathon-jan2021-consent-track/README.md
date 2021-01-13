@@ -123,7 +123,7 @@ Security Labeling Service (SLS) Testing - http://34.94.253.50:9091/swagger-ui.ht
 Connectathon examples are available by cloning the LEAP Demos repository
 ```
 > git clone https://github.com/sdhealthconnect/leap-demos.git
-> cd leap-demos/hl7-fhir-connectathon-jan2020-consent-track/examples
+> cd leap-demos/hl7-fhir-connectathon-jan2021-consent-track/examples
 ```
 
 ### Consent Decision Testing
