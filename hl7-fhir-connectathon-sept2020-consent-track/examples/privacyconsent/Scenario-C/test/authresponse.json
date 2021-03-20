@@ -1,0 +1,16 @@
+{
+  "cards":[
+    {
+      "summary":"CONSENT_DENY",
+      "detail":"There is a patient consent denying this action.",
+      "indicator":"info",
+      "source":{
+        "label":"Sample",
+        "url":"https://sample-cdms.org"
+      },
+      "extension":{
+        "decision":"CONSENT_DENY"
+      }
+    }
+  ]
+}

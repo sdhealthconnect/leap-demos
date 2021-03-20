@@ -3,6 +3,7 @@ package gov.hhs.onc.leap.ces.v2.orchestration.service;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import gov.hhs.onc.leap.ces.common.clients.card.ConsentConsultCardClient;
 import gov.hhs.onc.leap.ces.common.clients.model.card.*;
+import gov.hhs.onc.leap.ces.fhir.client.utils.FHIRAudit;
 import gov.hhs.onc.leap.ces.orchestration.model.LabelingResult;
 import gov.hhs.onc.leap.ces.orchestration.model.V2Message;
 import gov.hhs.onc.leap.ces.sls.client.SLSRequestClient;
@@ -40,6 +41,11 @@ public class V2OrchestrationService {
     private String label;
     private String slsDecision;
     private String slsDetail;
+
+    private PatientConsentConsultHookRequest authRequest;
+    private PatientConsentConsultHookResponse authResponse;
+
+    private FHIRAudit fhirAudit = new FHIRAudit();
     
     public String processMessage(String msg) {
         try {
@@ -48,9 +54,16 @@ public class V2OrchestrationService {
             Card card = decisionResult.getCards().get(0);
             Extension extension = card.getExtension();
             decision = extension.getDecision();
-            if ("CONSENT_PERMIT".equals(decision)) {
-                action = extension.getObligations().get(0).getObligationId().getCode();
-                label = extension.getObligations().get(0).getParameters().getCodes().get(0).getCode();
+            action = "";
+            label = "";
+            try {
+                if ("CONSENT_PERMIT".equals(decision)) {
+                    action = extension.getObligations().get(0).getObligationId().getCode();
+                    label = extension.getObligations().get(0).getParameters().getCodes().get(0).getCode();
+                }
+            }
+            catch (Exception ex) {
+                //no obligations to process
             }
             log.info("Decision: "+decision+" Action: "+action+" Label: "+label);
 
@@ -80,6 +93,7 @@ public class V2OrchestrationService {
                     log.info("Unable to determine any constraints on this document.  Allowing forward.");
                 }
                 log.info("Audit Consent Decision");
+                fhirAudit.auditConsentDecision(authRequest, authResponse);
             }
             else {
                 //authorization does not exist or is denied
@@ -105,7 +119,7 @@ public class V2OrchestrationService {
                                    .setScope(Context.Scope.PATIENT_PRIVACY)
                                    .setActor(Arrays.asList(actor));
 
-        PatientConsentConsultHookRequest request = new PatientConsentConsultHookRequest()
+        authRequest = new PatientConsentConsultHookRequest()
                                    .setContext(ctx)
                                    .setHook("patient-consent-consult")
                                    .setHookInstance(UUID.randomUUID().toString());
@@ -113,17 +127,17 @@ public class V2OrchestrationService {
 
         
         client = new ConsentConsultCardClient(CDS_HOST);
-        PatientConsentConsultHookResponse res = new PatientConsentConsultHookResponse();
+        authResponse = new PatientConsentConsultHookResponse();
 
         try {
-            log.info(new ObjectMapper().writeValueAsString(request));
-            res = client.getConsentDecision(request);
-            log.info(new ObjectMapper().writeValueAsString(res));
+            log.info(new ObjectMapper().writeValueAsString(authRequest));
+            authResponse = client.getConsentDecision(authRequest);
+            log.info(new ObjectMapper().writeValueAsString(authResponse));
         } catch (Exception ex) {
             log.error(ex.getMessage());
         }
    
-        return res;
+        return authResponse;
     }
     
     private LabelingResult produceSLSOutcome(String msg, V2Message v2Message) {

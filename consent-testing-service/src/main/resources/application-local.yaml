@@ -1,0 +1,3 @@
+cds:
+    host:
+        url: ${CDS_HOST_URL}

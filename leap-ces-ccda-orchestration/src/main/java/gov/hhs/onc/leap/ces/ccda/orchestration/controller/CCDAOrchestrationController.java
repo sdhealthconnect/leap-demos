@@ -3,8 +3,7 @@ package gov.hhs.onc.leap.ces.ccda.orchestration.controller;
 
 import gov.hhs.onc.leap.ces.common.clients.model.card.PatientConsentConsultHookRequest;
 import gov.hhs.onc.leap.ces.common.clients.model.card.PatientConsentConsultHookResponse;
-import gov.hhs.onc.leap.ces.orchestration.cds.PatientConsentConsultHookRequestWithData;
-import gov.hhs.onc.leap.ces.orchestration.cds.PatientConsentConsultXacmlRequestWithData;
+import gov.hhs.onc.leap.ces.orchestration.cds.*;
 import gov.hhs.onc.leap.ces.common.clients.model.xacml.XacmlRequest;
 import gov.hhs.onc.leap.ces.common.clients.model.xacml.XacmlResponse;
 import gov.hhs.onc.leap.ces.fhir.client.HapiFhirServer;
@@ -46,8 +45,8 @@ public class CCDAOrchestrationController {
     @PostMapping(path = "/processDocumentWithCDSHooks",
             consumes = {MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, MediaType.TEXT_PLAIN},
             produces = {MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
-    public String processDocumentCDSHooks(@RequestBody PatientConsentConsultHookRequestWithData hookRequestAndData) {
-        String res = orchestrationService.processDocumentCDSHooks(hookRequestAndData);
+    public PatientConsentConsultHookResponseWithData processDocumentCDSHooks(@RequestBody PatientConsentConsultHookRequestWithData hookRequestAndData) {
+        PatientConsentConsultHookResponseWithData res = orchestrationService.processDocumentCDSHooks(hookRequestAndData);
 
         return res;
     }
@@ -60,8 +59,8 @@ public class CCDAOrchestrationController {
     @PostMapping(path = "/processDocumentWithXACML",
             consumes = {MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, MediaType.TEXT_PLAIN},
             produces = {MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
-    public String processDocumentXacml(@RequestBody PatientConsentConsultXacmlRequestWithData xacmlRequestWithData) {
-        String res = orchestrationService.processDocumentXacml(xacmlRequestWithData);
+    public PatientConsentConsultXacmlResponseWithData processDocumentXacml(@RequestBody PatientConsentConsultXacmlRequestWithData xacmlRequestWithData) {
+        PatientConsentConsultXacmlResponseWithData res = orchestrationService.processDocumentXacml(xacmlRequestWithData);
 
         return res;
     }
@@ -90,6 +89,20 @@ public class CCDAOrchestrationController {
             produces = {MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
     public XacmlResponse requestAuthorizationXacml(@RequestBody XacmlRequest xacmlRequest) {
         XacmlResponse res = orchestrationService.requestAuthorizationXacml(xacmlRequest);
+
+        return res;
+    }
+
+    @Operation(summary = "Process a CCDA Document with Obligation",
+            description = "This method assumes and authorization decision of permit with obligations has been return previously allowing for actions based on organizational policy.  Returns privacy enforced CCDA as String",
+            responses = {
+                    @ApiResponse(responseCode = "200", description = "Authorization of Permit Recieved - Processing of Message is proceeding"),
+                    @ApiResponse(responseCode = "404", description = "Authorization of Deny Recieved - Processing of Message has ended")})
+    @PostMapping(path = "/processDocumentWithObligation",
+            consumes = {MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, MediaType.TEXT_PLAIN},
+            produces = {MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+    public String processDocumentWithObligation(@RequestBody DocumentWithObligations documentWithObligations) {
+        String res = orchestrationService.processDocumentWithObligation(documentWithObligations);
 
         return res;
     }

@@ -10,5 +10,6 @@ services:
     environment:
       CDS_HOST_URL: ${CDS_HOST_URL}
       SLS_HOST_URL: ${SLS_HOST_URL}
+      HAPI_FHIR_URL: ${HAPI_FHIR_URL}
     ports:
       - 9093:9093

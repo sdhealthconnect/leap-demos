@@ -29,8 +29,8 @@ public class HapiFhirServer {
     IGenericClient hapiClient;
 
     @Getter
-    @Value("${fhir.r4.baseurl}")
-    private String baseURL;
+    //@Value("${hapi.fhir.url}")
+    private String baseURL = "http://34.94.253.50:8080/hapi-fhir-jpaserver/fhir/";  //default for demonstrations
 
     @PostConstruct
     public void setUp() {

@@ -39,3 +39,4 @@ jobs:
         run: mvn -B clean verify
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          HAPI_FHIR_URL: http://34.94.253.50:8080/hapi-fhir-jpaserver/fhir

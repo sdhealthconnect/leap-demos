@@ -1,0 +1,13 @@
+version: '3.6'
+
+services:
+  consent-testing-service:
+    image: consent-testing-service
+    container_name: consent-testing-service
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      CDS_HOST_URL: ${CDS_HOST_URL}
+    ports:
+      - 9095:9095
