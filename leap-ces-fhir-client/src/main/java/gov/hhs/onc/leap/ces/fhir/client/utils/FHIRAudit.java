@@ -33,6 +33,9 @@ public class  FHIRAudit {
 
         decision = hookResponse.getCards().get(0).getExtension().getDecision();
 
+        client = new HapiFhirServer();
+        client.setUp();
+
         AuditEvent auditEvent = new AuditEvent();
         auditEvent.setId(UUID.randomUUID().toString());
         Coding auditType = new Coding();
@@ -72,10 +75,12 @@ public class  FHIRAudit {
 
         Reference patientReference = new Reference();
         Identifier patientId = new Identifier();
-        patientId.setSystem(hookRequest.getContext().getPatientId().get(0).getValue());
-        patientId.setId(hookRequest.getContext().getPatientId().get(0).getSystem());
-        patientReference.setIdentifier(patientId);
+        patientId.setId(hookRequest.getContext().getPatientId().get(0).getValue());
+        patientId.setSystem(hookRequest.getContext().getPatientId().get(0).getSystem());
 
+        Patient p = client.getPatient(patientId.getId());
+        patientReference.setReference(p.getResourceType().name()+"/"+p.getIdElement().getIdPart());
+        patientReference.setIdentifier(patientId);
         AuditEvent.AuditEventEntityComponent entityComp = new AuditEvent.AuditEventEntityComponent();
         entityComp.setWhat(patientReference);
 
@@ -105,8 +110,6 @@ public class  FHIRAudit {
 
         auditEvent.setEntity(lEntities);
 
-        client = new HapiFhirServer();
-        client.setUp();
         Bundle bundle = client.createAndExecuteBundle(auditEvent);
 
     }
