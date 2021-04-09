@@ -70,6 +70,7 @@ public class FHIRConnectathonService {
             XacmlRequest request = mapper.readValue(msg, XacmlRequest.class);
             xacmlClient = new ConsentConsultXacmlClient(CDS_HOST);
             XacmlResponse response = xacmlClient.getConsentDecision(request);
+            fhirAudit.auditConsentDecision(request, response);
             res = mapper.writeValueAsString(response);
         }
         catch (Exception ex) {
