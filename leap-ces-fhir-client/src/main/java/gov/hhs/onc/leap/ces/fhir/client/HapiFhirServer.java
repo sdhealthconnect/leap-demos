@@ -4,13 +4,14 @@ import ca.uhn.fhir.context.FhirContext;
 import ca.uhn.fhir.rest.api.SearchTotalModeEnum;
 import ca.uhn.fhir.rest.client.api.IGenericClient;
 import ca.uhn.fhir.rest.client.interceptor.LoggingInterceptor;
+import ca.uhn.fhir.rest.gclient.TokenClientParam;
 import gov.hhs.onc.leap.ces.fhir.client.exceptions.HapiFhirCreateException;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections4.CollectionUtils;
 import org.hl7.fhir.instance.model.api.IBaseOperationOutcome;
 import org.hl7.fhir.instance.model.api.IBaseResource;
-import org.springframework.beans.factory.annotation.Value;
+import org.hl7.fhir.r4.model.Patient;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
@@ -218,4 +219,16 @@ public class HapiFhirServer {
                 .newJsonParser()
                 .parseResource(resourceClass, resourceJson);
     }
+
+    public Patient getPatient(String identifierId) {
+        Bundle bundle = hapiClient.search().forResource(Patient.class)
+                .where(new TokenClientParam("identifier").exactly().identifier(identifierId))
+                .returnBundle(Bundle.class)
+                .execute();
+        if (bundle.hasEntry()) {
+            return (Patient) bundle.getEntryFirstRep().getResource();
+        }
+        return null;
+    }
+
 }

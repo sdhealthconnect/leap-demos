@@ -1,0 +1,1 @@
+{"hook":"patient-consent-consult","hookInstance":"0656ebd0-98ac-11eb-a8b3-0242ac130003","context":{"actor":[{"system":"urn:ietf:rfc:3986","value":"2.16.840.1.113883.20.5"}],"purposeOfUse":"TREAT","scope":"patient-privacy","patientId":[{"system":"https://github.com/synthetichealth/synthea","value":"32429a57-5a85-848b-87c9-87e434aa9a32"}]}}

@@ -7,9 +7,11 @@ import gov.hhs.onc.leap.ces.common.clients.model.card.PatientConsentConsultHookR
 import gov.hhs.onc.leap.ces.common.clients.model.xacml.XacmlRequest;
 import gov.hhs.onc.leap.ces.common.clients.model.xacml.XacmlResponse;
 import gov.hhs.onc.leap.ces.common.clients.xacml.ConsentConsultXacmlClient;
+import gov.hhs.onc.leap.ces.fhir.client.utils.FHIRAudit;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -23,6 +25,8 @@ public class FHIRConnectathonService {
     private ConsentConsultCardClient cardClient;
     private ConsentConsultXacmlClient xacmlClient;
     private String msg;
+
+    private FHIRAudit fhirAudit = new FHIRAudit();
 
     public String authRequest(String msg) {
 
@@ -49,6 +53,7 @@ public class FHIRConnectathonService {
             PatientConsentConsultHookRequest cardRequest = mapper.readValue(msg, PatientConsentConsultHookRequest.class);
             cardClient = new ConsentConsultCardClient(CDS_HOST);
             PatientConsentConsultHookResponse cardResponse = cardClient.getConsentDecision(cardRequest);
+            fhirAudit.auditConsentDecision(cardRequest, cardResponse);
             res = mapper.writeValueAsString(cardResponse);
         }
         catch (Exception ex) {
