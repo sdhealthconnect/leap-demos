@@ -26,8 +26,8 @@ public class FHIRConnectathonController {
     @Operation(summary = "Authorization Request",
             description = "Request Authorization Decision from LEAP CDS",
             responses = {
-                    @ApiResponse(responseCode = "200", description = "Authorization of Permit Recieved - Processing of Message is proceeding"),
-                    @ApiResponse(responseCode = "404", description = "Authorization of Deny Recieved - Processing of Message has ended")})
+                    @ApiResponse(responseCode = "200", description = "Authorization of Permit Received - Processing of Message is proceeding"),
+                    @ApiResponse(responseCode = "404", description = "Authorization of Deny Received - Processing of Message has ended")})
     @PostMapping(path = "/authRequest",
             consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE, MediaType.TEXT_PLAIN_VALUE},
             produces = {MediaType.TEXT_PLAIN_VALUE})
