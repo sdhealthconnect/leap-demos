@@ -1,3 +1,3 @@
 docker login docker.io
-docker tag sha256:91d8143a745555d8343ac4512255b80b38fab358a295064834b5aad58e71949a ddecouteau/consent-testing-service
-docker push ddecouteau/consent-testing-service
+docker tag sha256:2174de842769cec170e09ddd4709c3592570046fc2c33c868955f331eb937de8 gcr.io/protean-atom-319121/consent-testing-service
+docker push gcr.io/protean-atom-319121/consent-testing-service
