@@ -8,8 +8,6 @@ steps:
            'GITHUB_USERNAME=${_GITHUB_USERNAME}',
            '--build-arg',
            'GITHUB_PWD=${_GITHUB_PWD}',
-           '--build-arg',
-           'ARG_PORT=${_PORT}',
            '-t',
            'gcr.io/${_SERVICE_NAME}/consent-testing-service:$COMMIT_SHA',
            '-f',
