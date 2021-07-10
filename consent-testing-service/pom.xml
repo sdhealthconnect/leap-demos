@@ -46,6 +46,12 @@
         <groupId>gov.hhs.onc.leap</groupId>
         <artifactId>leap-ces-clients</artifactId>
         <version>0.3.0</version>
+        <exclusions>
+            <exclusion>
+                <artifactId>servlet-api</artifactId>
+                <groupId>javax.servlet</groupId>
+            </exclusion>
+        </exclusions>
     </dependency>
     <dependency>
         <groupId>org.springframework.boot</groupId>
